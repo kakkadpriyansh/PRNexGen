@@ -1,6 +1,7 @@
 import Header from "@/components/landing-page/header"
 import StartProject from "@/components/landing-page/start-project"
 import Footer from "@/components/landing-page/footer"
+import WhatsAppFloat from "@/components/ui/whatsapp-float"
 
 export const metadata = {
   title: "Start Your Project | PRNexGen",
@@ -9,10 +10,11 @@ export const metadata = {
 
 export default function StartPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-[#111111]">
+    <main className="min-h-screen bg-white">
       <Header />
       <StartProject />
       <Footer />
+      <WhatsAppFloat />
     </main>
   )
 }
