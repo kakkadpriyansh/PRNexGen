@@ -21,8 +21,7 @@ export async function fetchPortfolioData(): Promise<PortfolioItem[]> {
   try {
     // Use local sample file as primary source for template
     const response = await fetch("/data/portfolio-sample.csv", {
-      // Add cache: 'no-store' for server components to always fetch fresh data
-      cache: typeof window === "undefined" ? "no-store" : "default",
+      cache: "force-cache",
     })
 
     if (!response.ok) {
