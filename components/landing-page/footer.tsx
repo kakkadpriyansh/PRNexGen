@@ -140,7 +140,7 @@ export default function Footer() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-gray-400 text-sm"
+              className="text-gray-400 center text-sm"
             >
               © 2025 PRNexGen. All rights reserved.
             </motion.p>
@@ -151,7 +151,7 @@ export default function Footer() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4"
+              className="hidden flex items-center gap-4"
             >
               {socialLinks.map((social) => (
                 <motion.a
