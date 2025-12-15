@@ -19,10 +19,24 @@
     color: hsl(var(--foreground));
   }
 
-  /* Enhanced animations */
+  /* Prevent layout shifts */
   * {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Optimize animations */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+
 
   /* Custom gradient animation */
   .bg-300% {
@@ -31,7 +45,8 @@
 
   /* Smooth hover effects */
   .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform;
   }
   
   .hover-lift:hover {
@@ -55,6 +70,11 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary));
+  }
+
+  /* Performance optimizations */
+  img, video {
+    content-visibility: auto;
   }
 }
 

@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,10 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Suspense fallback={null}>
-          {children}
-          <Analytics />
-        </Suspense>
+        <ThemeProvider>
+          <Suspense fallback={null}>
+            {children}
+            <Analytics />
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   )
