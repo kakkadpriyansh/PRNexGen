@@ -15,14 +15,61 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "PRNexGen - Innovating the Next Generation of Digital Solutions",
+  title: "PRNexGen - Web Development, Mobile Apps, AI Automation & Cloud Solutions",
   description:
-    "PRNexGen is an IT startup providing web & mobile app development, AI automation, cloud & DevOps solutions, and cybersecurity consulting. We help startups, enterprises, and businesses build scalable and future-ready technology.",
+    "Leading IT company specializing in custom web development, mobile app development, AI automation, cloud infrastructure, DevOps, and cybersecurity services. Transform your business with cutting-edge digital solutions.",
+  keywords: [
+    "web development",
+    "mobile app development",
+    "AI automation",
+    "cloud solutions",
+    "DevOps services",
+    "cybersecurity",
+    "IT consulting",
+    "custom software development",
+    "digital transformation",
+    "enterprise solutions",
+    "startup technology",
+    "cloud infrastructure",
+    "API development",
+    "UI/UX design",
+    "full stack development"
+  ],
+  authors: [{ name: "PRNexGen" }],
+  creator: "PRNexGen",
+  publisher: "PRNexGen",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://prnexgen.com",
+    title: "PRNexGen - Web Development, Mobile Apps, AI Automation & Cloud Solutions",
+    description: "Leading IT company specializing in custom web development, mobile app development, AI automation, cloud infrastructure, DevOps, and cybersecurity services.",
+    siteName: "PRNexGen",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PRNexGen - Web Development, Mobile Apps, AI Automation & Cloud Solutions",
+    description: "Leading IT company specializing in custom web development, mobile app development, AI automation, cloud infrastructure, DevOps, and cybersecurity services.",
+  },
   icons: {
     icon: [{ url: "/fevilogo.jpg", type: "image/jpeg" }],
     apple: [{ url: "/fevilogo.jpg" }],
   },
-  generator: "v0.app",
+  metadataBase: new URL("https://prnexgen.com"),
+  alternates: {
+    canonical: "/",
+  },
 }
 
 export default function RootLayout({
@@ -32,6 +79,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider>
           <Suspense fallback={null}>
