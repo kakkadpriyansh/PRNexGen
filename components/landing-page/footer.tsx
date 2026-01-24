@@ -81,7 +81,7 @@ export default function Footer() {
                     PRNexGen
                   </div>
                 </Link>
-                
+
                 <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
                   Innovating the Next Generation of Digital Solutions. We transform businesses through cutting-edge technology and strategic innovation.
                 </p>
@@ -95,6 +95,10 @@ export default function Footer() {
                   <div className="flex items-center gap-3 text-gray-300">
                     <Phone className="w-5 h-5 text-blue-400" />
                     <span>+91 99799 93097</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-300">
+                    <Phone className="w-5 h-5 text-blue-400" />
+                    <span>+91 91734 73491</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-300">
                     <MapPin className="w-5 h-5 text-blue-400" />

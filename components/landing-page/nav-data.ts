@@ -14,7 +14,7 @@ export const resourcesDropdownData: SubNavItem[][] = [
     },
     {
       title: "Phone",
-      description: "+91 99799 93097",
+      description: "+91 99799 93097, +91 91734 73491",
       href: "tel:+919979993097",
       icon: Phone,
       color: iconColors.resources.tutorials,
