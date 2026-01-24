@@ -81,6 +81,19 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('prnexgen-theme') || 'light';
+                  document.documentElement.classList.add(theme);
+                  document.documentElement.style.visibility = 'visible';
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider>

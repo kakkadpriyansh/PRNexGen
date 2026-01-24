@@ -76,6 +76,44 @@
   img, video {
     content-visibility: auto;
   }
+
+  /* Prevent flash of unstyled content (FOUC) */
+  html {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Smooth animations without flashing */
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  /* Prevent animation flashing on page load */
+  .no-flash {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Smooth theme transitions */
+  html.changing-theme * {
+    transition: none !important;
+  }
+
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* GPU acceleration for animations */
+  [class*="motion-"] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
 }
 
 @layer base {
