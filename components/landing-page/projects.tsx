@@ -163,9 +163,7 @@ export default function Projects() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={false}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -209,9 +207,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={false}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100"
@@ -352,9 +348,7 @@ export default function Projects() {
 
         {/* CTA Button */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          initial={false}
           viewport={{ once: true }}
           className="text-center"
         >

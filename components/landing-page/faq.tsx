@@ -55,9 +55,7 @@ export default function Faq() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={false}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -93,9 +91,7 @@ export default function Faq() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={faq.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={false}
                 viewport={{ once: true }}
                 className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden"
               >
@@ -142,9 +138,7 @@ export default function Faq() {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          initial={false}
           viewport={{ once: true }}
           className="text-center mt-16"
         >

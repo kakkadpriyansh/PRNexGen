@@ -61,17 +61,11 @@ export default function Services() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          initial={false}
           className="text-center mb-20"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            viewport={{ once: true }}
+            initial={false}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-sm font-semibold mb-8 shadow-lg"
           >
             <motion.div
@@ -83,11 +77,7 @@ export default function Services() {
             Our Expertise
           </motion.div>
           
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
+          <h2
             className="text-5xl md:text-6xl lg:text-7xl font-black mb-8"
           >
             <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
@@ -101,17 +91,13 @@ export default function Services() {
             >
               Digital Transformation
             </motion.span>
-          </motion.h2>
+          </h2>
           
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
+          <p
             className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
           >
             We deliver comprehensive technology solutions that empower businesses to innovate, scale, and succeed in the digital age.
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Services Grid */}
@@ -119,9 +105,7 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: service.delay }}
+              initial={false}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden"
@@ -221,10 +205,7 @@ export default function Services() {
 
         {/* Bottom CTA with enhanced animation */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
+          initial={false}
           className="text-center"
         >
           <motion.button

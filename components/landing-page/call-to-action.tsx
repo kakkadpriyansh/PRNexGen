@@ -39,9 +39,7 @@ export default function CallToAction() {
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={false}
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-8"
           >
@@ -51,9 +49,7 @@ export default function CallToAction() {
 
           {/* Main heading */}
           <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={false}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
@@ -64,9 +60,7 @@ export default function CallToAction() {
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={false}
             viewport={{ once: true }}
             className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
@@ -75,9 +69,7 @@ export default function CallToAction() {
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            initial={false}
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
           >
@@ -101,9 +93,7 @@ export default function CallToAction() {
 
           {/* Features */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            initial={false}
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
@@ -126,9 +116,7 @@ export default function CallToAction() {
             ].map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                initial={false}
                 viewport={{ once: true }}
                 className="text-center"
               >
