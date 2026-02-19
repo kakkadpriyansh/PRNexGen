@@ -1,7 +1,7 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, ExternalLink, Code, Smartphone, Globe } from "lucide-react"
+import { ArrowRight, ExternalLink, Code, Smartphone, Globe, ChevronLeft, ChevronRight, Layout } from "lucide-react"
 import Link from "next/link"
 import ProjectModal from "./project-modal"
 
@@ -34,6 +34,12 @@ const projects = [
     description: "Full-stack travel booking platform with itinerary management and complete admin dashboard for packages.",
     tech: "Next.js • MongoDB • Stripe",
     image: "/avid-photo.png",
+    images: [
+      "/Avid Image/Screenshot 2026-02-17 171318.png",
+      "/Avid Image/Screenshot 2026-02-17 171333.png",
+      "/Avid Image/Screenshot 2026-02-17 171403.png",
+      "/Avid Image/Screenshot 2026-02-17 171416.png"
+    ],
     gradient: "from-purple-500 to-pink-500",
     icon: Globe,
     fullDescription: "Avid Explorers is a comprehensive travel platform that connects adventure seekers with unique travel experiences. The platform features intelligent booking systems, personalized itinerary creation, and seamless payment processing. Travel agencies can manage their packages, track bookings, and analyze customer preferences through the powerful admin dashboard.",
@@ -56,10 +62,17 @@ const projects = [
     description: "Role-based education management system with dashboards for teachers, students, and administrative staff.",
     tech: "Next.js • PostgreSQL • Auth",
     image: "/bdvh-ss.png",
+    images: [
+      "/BDVH Software/Screenshot 2026-02-12 131730.png",
+      "/BDVH Software/Screenshot 2026-02-12 131806.png",
+      "/BDVH Software/Screenshot 2026-02-12 131937.png",
+      "/BDVH Software/Screenshot 2026-02-12 132011.png",
+      "/BDVH Software/Screenshot 2026-02-12 132751.png"
+    ],
     gradient: "from-green-500 to-teal-500",
     icon: Code,
     fullDescription: "BDVH is a sophisticated education management platform designed to streamline academic operations. The system provides role-based access for teachers, students, and administrators, featuring comprehensive class management, assignment tracking, grade management, and communication tools. The platform enhances the educational experience through digital transformation.",
-    liveUrl: "https://bdvh-education.vercel.app",
+    liveUrl: "https://crm.bdvhinstitute.com",
     features: [
       "Role-based Access Control",
       "Class & Assignment Management",
@@ -71,11 +84,66 @@ const projects = [
     duration: "5 months",
     team: "6 developers",
     category: "Education Platform"
+  },
+  {
+    id: 4,
+    title: "BDVH Website CMS",
+    description: "Custom CMS website with inline on-page editing, bilingual i18n (English-Hindi), role-based authentication, and type-safe full-stack architecture.",
+    tech: "Next.js • i18n • CMS",
+    images: [
+      "/BDVH image/Screenshot 2026-02-17 171904.png",
+      "/BDVH image/Screenshot 2026-02-17 171921.png",
+      "/BDVH image/Screenshot 2026-02-17 171945.png",
+      "/BDVH image/Screenshot 2026-02-17 172013.png"
+    ],
+    gradient: "from-indigo-500 to-blue-500",
+    icon: Layout,
+    fullDescription: "BDVH Institute's custom CMS website features advanced inline on-page editing capabilities, allowing content managers to update website content in real-time. The platform supports bilingual content management with English-Hindi internationalization, role-based authentication for secure access control, and a type-safe full-stack architecture built with Next.js App Router and REST APIs for optimal performance and maintainability.",
+    liveUrl: "https://bdvh.prnexgen.in/",
+    features: [
+      "Inline On-Page Editing",
+      "Bilingual i18n (English-Hindi)",
+      "Role-based Authentication",
+      "Type-safe Architecture",
+      "App Router Integration",
+      "REST API Backend"
+    ],
+    duration: "3 months",
+    team: "3 developers",
+    category: "CMS Platform"
   }
 ]
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState<{[key: number]: number}>(() => {
+    const initial: {[key: number]: number} = {}
+    projects.forEach(project => {
+      if (project.images) {
+        initial[project.id] = 0
+      }
+    })
+    return initial
+  })
+
+  useEffect(() => {
+    return () => {}
+  }, [])
+
+  const handlePrevImage = (projectId: number, imagesLength: number) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [projectId]: ((prev[projectId] || 0) - 1 + imagesLength) % imagesLength
+    }))
+  }
+
+  const handleNextImage = (projectId: number, imagesLength: number) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [projectId]: ((prev[projectId] || 0) + 1) % imagesLength
+    }))
+  }
+
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background decoration */}
@@ -149,17 +217,77 @@ export default function Projects() {
               className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100"
             >
               {/* Project Image */}
-              <div className="relative h-64 overflow-hidden">
-                <motion.img
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative h-80 bg-gray-50 flex items-center justify-center cursor-pointer" onClick={() => setSelectedProject(project)}>
+                {project.images ? (
+                  <>
+                    <motion.img
+                      key={currentImageIndex[project.id] || 0}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                      src={project.images[currentImageIndex[project.id] || 0]}
+                      alt={`${project.title} - Image ${(currentImageIndex[project.id] || 0) + 1}`}
+                      className="max-w-full max-h-full object-contain pointer-events-none"
+                    />
+                    
+                    {/* Carousel Controls */}
+                    <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          handlePrevImage(project.id, project.images!.length)
+                        }}
+                        className="w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-20"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="w-6 h-6 text-gray-800" />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          handleNextImage(project.id, project.images!.length)
+                        }}
+                        className="w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-20"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="w-6 h-6 text-gray-800" />
+                      </button>
+                    </div>
+
+                    {/* Image Indicators */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                      {project.images.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            setCurrentImageIndex(prev => ({ ...prev, [project.id]: idx }))
+                          }}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            idx === (currentImageIndex[project.id] || 0)
+                              ? 'bg-white w-8'
+                              : 'bg-white/50 hover:bg-white/75'
+                          }`}
+                          aria-label={`Go to image ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <motion.img
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
 
               {/* Content */}
@@ -180,7 +308,7 @@ export default function Projects() {
                 </p>
 
                 {/* Action Button */}
-                <motion.div
+                <motion.button
                   whileHover={{ x: 5 }}
                   onClick={() => setSelectedProject(project)}
                   className="flex items-center gap-2 text-blue-600 font-semibold cursor-pointer group/btn"
@@ -192,7 +320,7 @@ export default function Projects() {
                   >
                     <ExternalLink className="w-5 h-5 group-hover/btn:text-blue-700 transition-colors" />
                   </motion.div>
-                </motion.div>
+                </motion.button>
               </div>
 
               {/* Floating particles on hover */}

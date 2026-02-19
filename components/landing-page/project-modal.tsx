@@ -7,7 +7,8 @@ interface Project {
   title: string
   description: string
   tech: string
-  image: string
+  image?: string
+  images?: string[]
   gradient: string
   fullDescription: string
   features: string[]
@@ -49,7 +50,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.6 }}
-                src={project.image}
+                src={project.images ? project.images[0] : project.image}
                 alt={project.title}
                 className="w-full h-full object-cover"
               />
