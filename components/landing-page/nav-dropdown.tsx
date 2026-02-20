@@ -6,8 +6,6 @@ import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronDown, ExternalLink } from "lucide-react"
-import { useTheme } from "next-themes"
-import { motion, AnimatePresence } from "framer-motion"
 
 export interface SubNavItem {
   title: string
@@ -38,8 +36,6 @@ export default function NavDropdown({
   const [xOffset, setXOffset] = useState(0)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
-  const { resolvedTheme } = useTheme()
-  const isDarkMode = resolvedTheme === "dark"
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
@@ -149,115 +145,103 @@ export default function NavDropdown({
         onClick={toggleDropdown}
         className={`flex items-center gap-1 transition-colors ${
           isOpen
-            ? "text-[#7A7FEE] dark:text-[#7A7FEE]"
-            : "text-black dark:text-white hover:text-[#7A7FEE] dark:hover:text-[#7A7FEE]"
+            ? "text-[hsl(var(--primary))]"
+            : "text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))]"
         }`}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
         {trigger}
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180 text-[#7A7FEE]" : ""}`} />
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180 text-[hsl(var(--primary))]" : ""}`} />
       </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            transition={{ duration: 0.2 }}
-            className={`absolute z-50 mt-2 p-6 rounded-xl shadow-lg 
-              ${isDarkMode ? "bg-[#272829] border border-gray-700" : "bg-white border border-gray-100"}`}
-            style={{
-              width: `${dropdownWidth}px`,
-              maxWidth: "calc(100vw - 2rem)",
-              transform: `translateX(${xOffset}px)`,
-              left: "0", // Align to the left edge of the parent
-            }}
-            onMouseLeave={closeDropdown}
-          >
-            {items.map((column, colIndex) => (
-              <div key={colIndex} className="space-y-6">
-                {column.map((item, itemIndex) => (
-                  <motion.div
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: 0.05 * itemIndex }}
-                    key={`${colIndex}-${itemIndex}`}
-                  >
-                    {item.external ? (
-                      <a
-                        href={item.href}
-                        className="flex items-start gap-3 group"
-                        onClick={closeDropdown}
-                        target="_blank"
-                        rel="noopener noreferrer"
+      {isOpen && (
+        <div
+          className="absolute z-50 mt-2 p-6 rounded-xl shadow-lg bg-[hsl(var(--card))] border border-[hsl(var(--border))] transition-all duration-200"
+          style={{
+            width: `${dropdownWidth}px`,
+            maxWidth: "calc(100vw - 2rem)",
+            transform: `translateX(${xOffset}px)`,
+            left: "0",
+          }}
+          onMouseLeave={closeDropdown}
+        >
+          {items.map((column, colIndex) => (
+            <div key={colIndex} className="space-y-6">
+              {column.map((item, itemIndex) => (
+                <div key={`${colIndex}-${itemIndex}`}>
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      className="flex items-start gap-3 group"
+                      onClick={closeDropdown}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div
+                        className={`flex-shrink-0 w-10 h-10 rounded-md flex items-center justify-center ${
+                          item.color || "bg-gray-100 dark:bg-gray-800"
+                        } shadow-sm group-hover:shadow-md transition-all duration-200`}
                       >
-                        <div
-                          className={`flex-shrink-0 w-10 h-10 rounded-md flex items-center justify-center ${
-                            item.color || "bg-gray-100 dark:bg-gray-800"
-                          } shadow-sm group-hover:shadow-md transition-all duration-200`}
-                        >
-                          {typeof item.icon === "string" ? (
-                            <Image
-                              src={item.icon || "/placeholder.svg"}
-                              alt=""
-                              width={24}
-                              height={24}
-                              className="w-6 h-6 object-contain"
-                            />
-                          ) : item.icon ? (
-                            <item.icon className="w-5 h-5 text-white" />
-                          ) : null}
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center">
-                            <h3 className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-[#7A7FEE] dark:group-hover:text-[#7A7FEE] transition-colors duration-200">
-                              {item.title}
-                            </h3>
-                            <ExternalLink className="w-3.5 h-3.5 ml-1.5 text-gray-400 group-hover:text-[#7A7FEE]" />
-                          </div>
-                          {item.description && (
-                            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.description}</p>
-                          )}
-                        </div>
-                      </a>
-                    ) : (
-                      <Link href={item.href} className="flex items-start gap-3 group" onClick={closeDropdown}>
-                        <div
-                          className={`flex-shrink-0 w-10 h-10 rounded-md flex items-center justify-center ${
-                            item.color || "bg-gray-100 dark:bg-gray-800"
-                          } shadow-sm group-hover:shadow-md transition-all duration-200`}
-                        >
-                          {typeof item.icon === "string" ? (
-                            <Image
-                              src={item.icon || "/placeholder.svg"}
-                              alt=""
-                              width={24}
-                              height={24}
-                              className="w-6 h-6 object-contain"
-                            />
-                          ) : item.icon ? (
-                            <item.icon className="w-5 h-5 text-white" />
-                          ) : null}
-                        </div>
-                        <div>
+                        {typeof item.icon === "string" ? (
+                          <Image
+                            src={item.icon || "/placeholder.svg"}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="w-6 h-6 object-contain"
+                          />
+                        ) : item.icon ? (
+                          <item.icon className="w-5 h-5 text-white" />
+                        ) : null}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center">
                           <h3 className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-[#7A7FEE] dark:group-hover:text-[#7A7FEE] transition-colors duration-200">
                             {item.title}
                           </h3>
-                          {item.description && (
-                            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.description}</p>
-                          )}
+                          <ExternalLink className="w-3.5 h-3.5 ml-1.5 text-gray-400 group-hover:text-[#7A7FEE]" />
                         </div>
-                      </Link>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+                        {item.description && (
+                          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.description}</p>
+                        )}
+                      </div>
+                    </a>
+                  ) : (
+                    <Link href={item.href} className="flex items-start gap-3 group" onClick={closeDropdown}>
+                      <div
+                        className={`flex-shrink-0 w-10 h-10 rounded-md flex items-center justify-center ${
+                          item.color || "bg-gray-100 dark:bg-gray-800"
+                        } shadow-sm group-hover:shadow-md transition-all duration-200`}
+                      >
+                        {typeof item.icon === "string" ? (
+                          <Image
+                            src={item.icon || "/placeholder.svg"}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="w-6 h-6 object-contain"
+                          />
+                        ) : item.icon ? (
+                          <item.icon className="w-5 h-5 text-white" />
+                        ) : null}
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-[#7A7FEE] dark:group-hover:text-[#7A7FEE] transition-colors duration-200">
+                          {item.title}
+                        </h3>
+                        {item.description && (
+                          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.description}</p>
+                        )}
+                      </div>
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

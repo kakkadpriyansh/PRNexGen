@@ -18,7 +18,7 @@ export { Header, Hero, About, Services, Testimonials, Projects, Faq, CallToActio
 // Main component that combines all sections
 export default function LandingPage({ showHeader = true, showFooter = true }: LandingPageProps) {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen landing-root">
       {showHeader && <Header />}
       <Hero />
       <About />

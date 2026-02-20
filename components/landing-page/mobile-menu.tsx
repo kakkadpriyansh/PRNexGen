@@ -25,8 +25,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     setMounted(true)
   }, [])
 
-  const isDarkMode = mounted && resolvedTheme === "dark"
-
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -69,9 +67,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <div className="fixed inset-0 z-[100] bg-black/50 md:hidden" style={{ display: isOpen ? "block" : "none" }}>
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white dark:bg-[#111111] shadow-xl overflow-y-auto"
+        className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[hsl(var(--background))] shadow-xl overflow-y-auto"
       >
-        <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111111]">
+        <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b border-[hsl(var(--border))] bg-[hsl(var(--background))]">
           <Link href="/" className="flex items-center" onClick={onClose}>
             {mounted ? (
               <Image
@@ -87,10 +85,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </Link>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-full hover:bg-[hsl(var(--secondary))] transition-colors"
             aria-label="Close menu"
           >
-            <X className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+            <X className="h-6 w-6 text-[hsl(var(--foreground))]" />
           </button>
         </div>
 
@@ -101,8 +99,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 href="/"
                 className={`flex items-center py-3 px-4 rounded-lg text-base ${
                   pathname === "/"
-                    ? "bg-[#7A7FEE]/10 text-[#7A7FEE]"
-                    : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    ? "bg-[hsl(var(--primary)/0.12)] text-[hsl(var(--primary))]"
+                    : "text-[hsl(var(--foreground))] hover:bg-[hsl(var(--secondary))]"
                 }`}
                 onClick={onClose}
               >
@@ -116,8 +114,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 onClick={() => toggleDropdown("resources")}
                 className={`flex items-center justify-between w-full py-3 px-4 rounded-lg text-base ${
                   pathname.startsWith("/resources")
-                    ? "bg-[#7A7FEE]/10 text-[#7A7FEE]"
-                    : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    ? "bg-[hsl(var(--primary)/0.12)] text-[hsl(var(--primary))]"
+                    : "text-[hsl(var(--foreground))] hover:bg-[hsl(var(--secondary))]"
                 }`}
               >
                 <span>Resources</span>
@@ -159,11 +157,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center">
-                                <h3 className="text-sm font-medium text-gray-900 dark:text-white">{item.title}</h3>
-                                <ExternalLink className="w-3.5 h-3.5 ml-1.5 text-gray-400" />
+                                <h3 className="text-sm font-medium text-[hsl(var(--foreground))]">{item.title}</h3>
+                                <ExternalLink className="w-3.5 h-3.5 ml-1.5 text-[hsl(var(--muted-foreground))]" />
                               </div>
                               {item.description && (
-                                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.description}</p>
+                                <p className="mt-1 text-xs text-[hsl(var(--muted-foreground))]">{item.description}</p>
                               )}
                             </div>
                           </a>
@@ -192,9 +190,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                               ) : null}
                             </div>
                             <div>
-                              <h3 className="text-sm font-medium text-gray-900 dark:text-white">{item.title}</h3>
+                              <h3 className="text-sm font-medium text-[hsl(var(--foreground))]">{item.title}</h3>
                               {item.description && (
-                                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.description}</p>
+                                <p className="mt-1 text-xs text-[hsl(var(--muted-foreground))]">{item.description}</p>
                               )}
                             </div>
                           </Link>

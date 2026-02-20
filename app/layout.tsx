@@ -1,17 +1,25 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Bricolage_Grotesque, Fraunces } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import PageTransition from "@/components/ui/page-transition"
 
-const inter = Inter({
+const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-bricolage",
+})
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-fraunces",
 })
 
 export const metadata: Metadata = {
@@ -81,11 +89,24 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('prnexgen-theme') || 'light';
+                  document.documentElement.classList.add(theme);
+                  document.documentElement.style.visibility = 'visible';
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
-      <body className={inter.className}>
+      <body className={`${bricolageGrotesque.className} ${bricolageGrotesque.variable} ${fraunces.variable}`}>
         <ThemeProvider>
           <Suspense fallback={null}>
-            {children}
+            <PageTransition>{children}</PageTransition>
             <Analytics />
           </Suspense>
         </ThemeProvider>
