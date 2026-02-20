@@ -1,5 +1,4 @@
 "use client"
-import { motion } from "framer-motion"
 import { Code2, Zap, Cloud, Shield, ArrowRight, Smartphone, Brain, Server, Lock, Star } from "lucide-react"
 
 const services = [
@@ -8,7 +7,7 @@ const services = [
     title: "Web & Mobile Development",
     description: "Custom applications built with cutting-edge technologies for exceptional performance and user experience.",
     icon: Smartphone,
-    gradient: "from-blue-500 to-cyan-500",
+    tone: "tone-lagoon",
     features: ["React/Next.js", "Flutter/React Native", "Progressive Web Apps", "API Integration"],
     delay: 0
   },
@@ -17,7 +16,7 @@ const services = [
     title: "AI & Machine Learning",
     description: "Intelligent automation and AI solutions that transform business operations and drive innovation.",
     icon: Brain,
-    gradient: "from-purple-500 to-pink-500",
+    tone: "tone-ember",
     features: ["Custom AI Models", "Process Automation", "Data Analytics", "Chatbots & NLP"],
     delay: 0.1
   },
@@ -26,7 +25,7 @@ const services = [
     title: "Cloud & DevOps",
     description: "Scalable cloud infrastructure and DevOps practices for reliable, secure, and efficient deployments.",
     icon: Server,
-    gradient: "from-green-500 to-teal-500",
+    tone: "tone-olive",
     features: ["AWS/Azure/GCP", "Docker & Kubernetes", "CI/CD Pipelines", "Infrastructure as Code"],
     delay: 0.2
   },
@@ -35,7 +34,7 @@ const services = [
     title: "Cybersecurity",
     description: "Comprehensive security solutions to protect your digital assets and ensure regulatory compliance.",
     icon: Lock,
-    gradient: "from-red-500 to-orange-500",
+    tone: "tone-cinder",
     features: ["Security Audits", "Penetration Testing", "Compliance", "Threat Monitoring"],
     delay: 0.3
   },
@@ -43,190 +42,83 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
-      {/* Background decoration */}
+    <section id="services" className="py-24 bg-[hsl(var(--secondary))] relative overflow-hidden">
       <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-20 right-20 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
-          transition={{ duration: 10, repeat: Infinity }}
-        />
+        <div data-float className="absolute top-20 right-20 w-72 h-72 bg-[hsl(var(--accent)/0.2)] rounded-full blur-3xl" />
+        <div data-float className="absolute bottom-20 left-20 w-96 h-96 bg-[hsl(var(--primary)/0.18)] rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={false}
-          className="text-center mb-20"
-        >
-          <motion.div
-            initial={false}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-sm font-semibold mb-8 shadow-lg"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Zap className="w-5 h-5" />
-            </motion.div>
+        <div data-animate className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full section-pill text-sm font-semibold mb-8 shadow-lg">
+            <Zap className="w-5 h-5" />
             Our Expertise
-          </motion.div>
+          </div>
           
-          <h2
-            className="text-5xl md:text-6xl lg:text-7xl font-black mb-8"
-          >
-            <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold mb-8 section-heading">
+            <span className="text-[hsl(var(--foreground))]">
               Services That Drive
             </span>
             <br />
-            <motion.span
-              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-              transition={{ duration: 5, repeat: Infinity }}
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300%"
-            >
+            <span className="accent">
               Digital Transformation
-            </motion.span>
+            </span>
           </h2>
           
           <p
-            className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+            className="text-xl max-w-4xl mx-auto leading-relaxed section-copy"
           >
             We deliver comprehensive technology solutions that empower businesses to innovate, scale, and succeed in the digital age.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto mb-16">
+        <div data-animate="stagger" className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto mb-16">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.id}
-              initial={false}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden"
+              data-animate-child
+              className="group relative surface-card rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden"
             >
-              {/* Animated background gradient */}
-              <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                whileHover={{ scale: 1.1 }}
-              />
+              <div className={`absolute inset-0 ${service.tone} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
               
-              {/* Floating particles on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className={`absolute w-2 h-2 bg-gradient-to-r ${service.gradient} rounded-full`}
-                    animate={{
-                      y: [0, -20, 0],
-                      x: [0, Math.random() * 20 - 10, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                    }}
-                    style={{
-                      left: `${20 + i * 15}%`,
-                      top: `${20 + i * 10}%`,
-                    }}
-                  />
-                ))}
+              <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${service.tone} mb-6 shadow-lg relative z-10 transition-transform duration-300 group-hover:scale-105`}>
+                <service.icon className="w-10 h-10 text-[hsl(var(--primary-foreground))]" />
               </div>
-              
-              {/* Icon with animation */}
-              <motion.div
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.6 }}
-                className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 shadow-lg relative z-10`}
-              >
-                <service.icon className="w-10 h-10 text-white" />
-                <motion.div
-                  className="absolute inset-0 rounded-2xl bg-white/20"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0, 0.5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </motion.div>
 
-              {/* Content */}
-              <motion.h3
-                whileHover={{ x: 5 }}
-                className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors relative z-10"
-              >
+              <h3 className="text-2xl font-semibold mb-4 text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--primary))] transition-colors relative z-10">
                 {service.title}
-              </motion.h3>
+              </h3>
               
-              <p className="text-gray-600 mb-6 leading-relaxed relative z-10">
+              <p className="text-[hsl(var(--muted-foreground))] mb-6 leading-relaxed relative z-10">
                 {service.description}
               </p>
 
-              {/* Features with stagger animation */}
               <div className="space-y-3 mb-6 relative z-10">
                 {service.features.map((feature, idx) => (
-                  <motion.div
+                  <div
                     key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: service.delay + idx * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-3 text-sm text-gray-500"
+                    className="flex items-center gap-3 text-sm text-[hsl(var(--muted-foreground))]"
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 180 }}
-                      className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.gradient}`}
-                    />
-                    <span className="group-hover:text-gray-700 transition-colors">{feature}</span>
-                  </motion.div>
+                    <div className={`w-2 h-2 rounded-full ${service.tone}`} />
+                    <span className="group-hover:text-[hsl(var(--foreground))] transition-colors">{feature}</span>
+                  </div>
                 ))}
               </div>
 
-              {/* Learn More Link */}
-              <motion.div
-                whileHover={{ x: 10 }}
-                className="flex items-center gap-2 text-blue-600 font-semibold cursor-pointer relative z-10 group/link"
-              >
+              <div className="flex items-center gap-2 text-[hsl(var(--primary))] font-semibold cursor-pointer relative z-10 group/link">
                 Learn More
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <ArrowRight className="w-5 h-5 group-hover/link:text-blue-700 transition-colors" />
-                </motion.div>
-              </motion.div>
-            </motion.div>
+                <ArrowRight className="w-5 h-5 group-hover/link:text-[hsl(var(--accent))] transition-colors" />
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Bottom CTA with enhanced animation */}
-        <motion.div
-          initial={false}
-          className="text-center"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              whileHover={{ scale: 1.1 }}
-            />
+        <div data-animate className="text-center">
+          <button className="group relative inline-flex items-center gap-3 px-10 py-5 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
             <span className="relative z-10">Explore All Services</span>
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="relative z-10"
-            >
-              <ArrowRight className="w-6 h-6" />
-            </motion.div>
-          </motion.button>
-        </motion.div>
+            <ArrowRight className="w-6 h-6 relative z-10" />
+          </button>
+        </div>
       </div>
     </section>
   )

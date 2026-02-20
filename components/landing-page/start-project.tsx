@@ -3,8 +3,7 @@
 import ProjectForm from "./project-form"
 import { useEffect } from "react"
 import { useTheme } from "next-themes"
-import { motion } from "framer-motion"
-import { Sparkles, Rocket } from "lucide-react"
+import { Rocket } from "lucide-react"
 
 export default function StartProject() {
   const { resolvedTheme } = useTheme()
@@ -24,7 +23,7 @@ export default function StartProject() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length) {
-          const iframe = document.querySelector("iframe[data-tally-src]")
+          const iframe = document.querySelector("iframe[data-tally-src]") as HTMLIFrameElement | null
           if (iframe) {
             // Set a data attribute on the iframe that can be used in CSS
             iframe.setAttribute("data-theme", resolvedTheme || "light")
@@ -51,72 +50,34 @@ export default function StartProject() {
   }, [resolvedTheme])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
-      {/* Background Elements */}
+    <div className="min-h-screen bg-[hsl(var(--background))] relative overflow-hidden">
       <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-20 right-20 w-72 h-72 bg-blue-200/30 dark:bg-blue-500/20 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-purple-200/30 dark:bg-purple-500/20 rounded-full blur-3xl"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
-          transition={{ duration: 10, repeat: Infinity }}
-        />
+        <div data-float className="absolute top-20 right-20 w-72 h-72 bg-[hsl(var(--accent)/0.2)] rounded-full blur-3xl" />
+        <div data-float className="absolute bottom-20 left-20 w-96 h-96 bg-[hsl(var(--primary)/0.18)] rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 pt-20 pb-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto mb-12"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-8 shadow-lg"
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                <Rocket className="w-5 h-5" />
-              </motion.div>
-              Let's Build Together
-            </motion.div>
+          <div data-animate className="text-center max-w-4xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full section-pill text-sm font-semibold mb-8 shadow-lg">
+              <Rocket className="w-5 h-5" />
+              Let&apos;s Build Together
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight"
-            >
-              <span className="text-gray-800 dark:text-white">Ready to Start</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+              <span className="text-[hsl(var(--foreground))]">Ready to Start</span>
               <br />
-              <span className="text-gray-800 dark:text-white">Your Next</span>{" "}
-              <motion.span
-                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                transition={{ duration: 5, repeat: Infinity }}
-                className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-300%"
-              >
+              <span className="text-[hsl(var(--foreground))]">Your Next</span>{" "}
+              <span className="accent">
                 Project
-              </motion.span>
-              <span className="text-gray-800 dark:text-white">?</span>
-            </motion.h1>
+              </span>
+              <span className="text-[hsl(var(--foreground))]">?</span>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              Answer some quick questions about your project and schedule a call with your dedicated project manager. Let's turn your vision into reality.
-            </motion.p>
-          </motion.div>
+            <p className="text-xl text-[hsl(var(--muted-foreground))] mb-12 max-w-3xl mx-auto leading-relaxed">
+              Answer some quick questions about your project and schedule a call with your dedicated project manager. Let&apos;s turn your vision into reality.
+            </p>
+          </div>
         </div>
       </div>
       
