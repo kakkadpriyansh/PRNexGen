@@ -2,201 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 224 71% 4%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 243 75% 59%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 20% 98%;
+    --card: 224 71% 6%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71% 6%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 243 75% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 28% 10%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 28% 10%;
+    --muted-foreground: 217 11% 65%;
+    --accent: 262 83% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 28% 14%;
+    --input: 215 28% 14%;
+    --ring: 243 75% 65%;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
   }
-  
-  body {
-    font-family: var(--font-sans);
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
 
-  /* Prevent layout shifts */
-  * {
+  body {
+    @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Optimize animations */
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-
-
-
-  /* Custom gradient animation */
-  .bg-300\% {
-    background-size: 300% 300%;
-  }
-
-  /* Smooth hover effects */
-  .hover-lift {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    will-change: transform;
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground));
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary));
-  }
-
-  /* Performance optimizations */
-  img, video {
-    content-visibility: auto;
-  }
-
-  /* Prevent flash of unstyled content (FOUC) */
-  html {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  /* Smooth animations without flashing */
-  * {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  /* Prevent animation flashing on page load */
-  .no-flash {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  /* Smooth theme transitions */
-  html.changing-theme * {
-    transition: none !important;
-  }
-
-  /* Reduce motion for better performance */
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
-  /* GPU acceleration for animations */
-  [class*="motion-"] {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
-}
-
-@layer base {
-  :root {
-    --font-sans: var(--font-bricolage);
-    --font-display: var(--font-fraunces);
-    --font-mono: var(--font-geist-mono);
-    --background: 38 41% 93%;
-    --foreground: 30 7% 11%;
-    --card: 38 45% 96%;
-    --card-foreground: 30 7% 12%;
-    --popover: 38 45% 96%;
-    --popover-foreground: 30 7% 12%;
-    --primary: 8 63% 46%;
-    --primary-foreground: 36 60% 96%;
-    --secondary: 34 30% 90%;
-    --secondary-foreground: 30 9% 16%;
-    --muted: 35 27% 87%;
-    --muted-foreground: 33 17% 36%;
-    --accent: 175 66% 28%;
-    --accent-foreground: 36 60% 96%;
-    --destructive: 0 72% 52%;
-    --destructive-foreground: 36 60% 96%;
-    --border: 34 26% 82%;
-    --input: 34 26% 82%;
-    --ring: 8 63% 46%;
-    --chart-1: 8 63% 46%;
-    --chart-2: 175 66% 28%;
-    --chart-3: 32 88% 57%;
-    --chart-4: 14 44% 24%;
-    --chart-5: 196 32% 28%;
-    --radius: 0.5rem;
-    --sidebar-background: 38 41% 93%;
-    --sidebar-foreground: 30 7% 16%;
-    --sidebar-primary: 8 63% 46%;
-    --sidebar-primary-foreground: 36 60% 96%;
-    --sidebar-accent: 34 30% 90%;
-    --sidebar-accent-foreground: 8 63% 46%;
-    --sidebar-border: 34 26% 82%;
-    --sidebar-ring: 8 63% 46%;
-  }
-  .dark {
-    --background: 210 19% 6%;
-    --foreground: 36 24% 92%;
-    --card: 210 20% 9%;
-    --card-foreground: 36 24% 92%;
-    --popover: 210 20% 9%;
-    --popover-foreground: 36 24% 92%;
-    --primary: 32 88% 57%;
-    --primary-foreground: 210 24% 10%;
-    --secondary: 210 18% 12%;
-    --secondary-foreground: 36 24% 92%;
-    --muted: 210 18% 12%;
-    --muted-foreground: 36 10% 72%;
-    --accent: 174 52% 48%;
-    --accent-foreground: 210 24% 10%;
-    --destructive: 0 72% 42%;
-    --destructive-foreground: 36 24% 92%;
-    --border: 210 16% 16%;
-    --input: 210 16% 16%;
-    --ring: 32 88% 57%;
-    --chart-1: 32 88% 57%;
-    --chart-2: 174 52% 48%;
-    --chart-3: 8 63% 46%;
-    --chart-4: 36 28% 70%;
-    --chart-5: 196 32% 38%;
-    --sidebar-background: 210 19% 6%;
-    --sidebar-foreground: 36 24% 92%;
-    --sidebar-primary: 32 88% 57%;
-    --sidebar-primary-foreground: 210 24% 10%;
-    --sidebar-accent: 210 18% 12%;
-    --sidebar-accent-foreground: 32 88% 57%;
-    --sidebar-border: 210 16% 16%;
-    --sidebar-ring: 32 88% 57%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  h1, h2, h3, h4, h5 {
-    font-family: var(--font-display);
-  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
 }

@@ -1,33 +1,33 @@
 import Header from "./header"
 import Hero from "./hero"
+import Ticker from "./ticker"
 import About from "./about"
 import Services from "./services"
-import Testimonials from "./testimonials"
+import Process from "./process"
 import Projects from "./projects"
+import Testimonials from "./testimonials"
 import Faq from "./faq"
 import CallToAction from "./call-to-action"
+import Contact from "./contact"
 import Footer from "./footer"
-import ContactFormButton from "./contact-form-button"
-import StartProject from "./start-project"
-import WhatsAppFloat from "../ui/whatsapp-float"
-import type { LandingPageProps } from "./types"
+import WhatsAppFloat from "@/components/ui/whatsapp-float"
 
-// Export individual components for flexible usage
-export { Header, Hero, About, Services, Testimonials, Projects, Faq, CallToAction, Footer, ContactFormButton, StartProject }
-
-// Main component that combines all sections
-export default function LandingPage({ showHeader = true, showFooter = true }: LandingPageProps) {
+export default function LandingPage() {
   return (
-    <main className="min-h-screen landing-root">
-      {showHeader && <Header />}
+    <main className="min-h-screen">
+      <Header />
       <Hero />
+      <Ticker />
       <About />
       <Services />
+      <Ticker />
+      <Process />
       <Projects />
       <Testimonials />
       <Faq />
       <CallToAction />
-      {showFooter && <Footer />}
+      <Contact />
+      <Footer />
       <WhatsAppFloat />
     </main>
   )

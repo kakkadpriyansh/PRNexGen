@@ -1,87 +1,116 @@
 "use client"
-import dynamic from "next/dynamic"
-import { Play, Code, Zap, Globe } from "lucide-react"
 
-const ContactFormButton = dynamic(() => import("./contact-form-button"), { ssr: false })
+import { ArrowRight, MoveRight } from "lucide-react"
+import Image from "next/image"
 
 export default function Hero() {
+  const scrollTo = (href: string) => {
+    const el = document.querySelector(href)
+    if (el) el.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden landing-hero" aria-label="Hero section">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-20 text-[hsl(var(--accent)/0.55)] hidden lg:block">
-          <Code size={40} />
-        </div>
-        <div className="absolute top-40 right-32 text-[hsl(var(--primary)/0.5)] hidden lg:block">
-          <Zap size={35} />
-        </div>
-        <div className="absolute bottom-32 left-32 text-[hsl(var(--foreground)/0.35)] hidden lg:block">
-          <Globe size={45} />
-        </div>
-      </div>
+    <section id="home" className="hero-dark relative overflow-hidden min-h-screen flex items-center pt-16">
+      {/* Background glow blobs */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
-      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-6xl mx-auto hero-stagger">
-          {/* Badge */}
-          <div className="hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-full hero-badge text-sm font-semibold mb-8 shadow-lg">
-            Next-Gen Digital Solutions
-          </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* Main heading */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold leading-tight mb-8 mt-16 sm:mt-0 hero-title" itemProp="headline">
-            <span className="hero-title-accent">
-              Transform
-            </span>
-            <br />
-            <span className="hero-title-base">
-              Your Business
-            </span>
-          </h1>
+          {/* Left — Text */}
+          <div className="space-y-7">
+            <div className="flex items-center gap-2 text-primary text-sm font-semibold">
+              <span className="text-primary opacity-70">//</span>
+              Experience The Best IT Solutions
+            </div>
 
-          {/* Subtitle */}
-          <p className="text-2xl md:text-3xl mb-12 max-w-4xl mx-auto leading-relaxed font-light hero-subtitle" itemProp="description">
-            We craft{" "}
-            <span className="font-semibold hero-highlight">
-              cutting-edge digital solutions
-            </span>{" "}
-            that drive growth through AI, cloud technologies, and innovation.
-          </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-white">
+              Where Creativity
+              <br />
+              Meets{" "}
+              <span className="hero-accent-text">Cutting-Edge</span>
+              <br />
+              Technology
+            </h1>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            <ContactFormButton />
-            
-            <button className="group inline-flex items-center gap-3 px-8 py-4 rounded-full btn-outline transition-all duration-200 backdrop-blur-sm shadow-lg">
-              <Play className="w-6 h-6 group-hover:text-[hsl(var(--primary))] transition-colors" />
-              Watch Demo
-            </button>
-          </div>
+            <p className="text-white/60 text-base leading-relaxed max-w-md">
+              We build premium digital experiences — from blazing-fast websites to AI-powered products — that help your business grow and stand out.
+            </p>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-            {[
-              { number: "3+", label: "Years Experience" },
-              { number: "15+", label: "Projects Delivered" },
-              { number: "100%", label: "Client Satisfaction" },
-              { number: "24/7", label: "Support Available" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-4 rounded-2xl stat-card backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                onClick={() => scrollTo("#contact")}
+                className="hero-btn-primary"
               >
-                <div className="text-3xl md:text-4xl font-bold stat-number mb-2">
-                  {stat.number}
+                Explore More
+                <ArrowRight size={17} />
+              </button>
+              <button
+                onClick={() => scrollTo("#services")}
+                className="hero-btn-ghost"
+              >
+                View All Services
+                <MoveRight size={17} />
+              </button>
+            </div>
+          </div>
+
+          {/* Right — Image Collage */}
+          <div className="relative hidden lg:block">
+            <div className="hero-collage">
+              {/* Main large image */}
+              <div className="hero-img-main">
+                <Image
+                  src="/modern-office.png"
+                  alt="Team working"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+              </div>
+
+              {/* Top-right small */}
+              <div className="hero-img-tr">
+                <Image
+                  src="/business-technology-innovation.jpg"
+                  alt="Innovation"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Bottom-left small */}
+              <div className="hero-img-bl">
+                <Image
+                  src="/tech-digital-abstract-blue.jpg"
+                  alt="Technology"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Floating badge */}
+              <div className="hero-badge-float">
+                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                <div className="text-sm text-[hsl(var(--muted-foreground))] font-medium">
-                  {stat.label}
+                <div>
+                  <div className="text-xs font-bold text-white">100% Satisfaction</div>
+                  <div className="text-[10px] text-white/60">Guaranteed Results</div>
                 </div>
               </div>
-            ))}
+
+              {/* Experience badge */}
+              <div className="hero-exp-badge">
+                <div className="text-2xl font-extrabold text-white leading-none">3+</div>
+                <div className="text-[10px] text-white/70 font-medium">Years of<br/>Excellence</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-
     </section>
   )
 }

@@ -1,124 +1,133 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { Menu } from "lucide-react"
+import { Menu, X, Moon, Sun, Sparkles } from "lucide-react"
+import { useTheme } from "next-themes"
 
-import NavDropdown from "./nav-dropdown"
-import MobileMenu from "./mobile-menu"
-import { resourcesDropdownData } from "./nav-data"
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Projects", href: "#projects" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact", href: "#contact" },
+]
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const pathname = usePathname()
-  const router = useRouter()
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    handleScroll()
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
+    setMounted(true)
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const handleLogoClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    router.push("/")
+  const scrollTo = (href: string) => {
+    setMobileOpen(false)
+    const el = document.querySelector(href)
+    if (el) el.scrollIntoView({ behavior: "smooth" })
   }
-
-  const logoSrc = "/logo-lightmode.png"
 
   return (
     <>
       <header
-        className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled 
-            ? "bg-[hsl(var(--background)/0.92)] backdrop-blur-md shadow-lg border-b border-[hsl(var(--border))]" 
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "navbar-scrolled" : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center hover:opacity-90 transition-opacity" onClick={handleLogoClick}>
-              <div className="text-3xl brand-mark">
-                PRNexGen
-              </div>
-            </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-18">
+            <button onClick={() => scrollTo("#home")} className="brand-mark text-2xl">
+              PRNexGen
+            </button>
 
-            <div className="flex items-center space-x-8">
-              <nav className="hidden md:block">
-                <ul className="flex space-x-8">
-                  <li className="hidden md:block">
-                    <NavDropdown
-                      trigger="Resources"
-                      items={resourcesDropdownData}
-                      columns={2}
-                      className={pathname.startsWith("/resources") ? "text-[hsl(var(--primary))]" : ""}
-                    />
-                  </li>
-                  <li>
-                    <Link
-                      href="/portfolio"
-                      className={`font-medium transition-colors duration-200 ${
-                        pathname === "/portfolio"
-                          ? "text-[hsl(var(--primary))]"
-                          : "text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))]"
-                      }`}
-                    >
-                      Portfolio
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/start"
-                      className={`font-medium transition-colors duration-200 ${
-                        pathname === "/start"
-                          ? "text-[hsl(var(--primary))]"
-                          : "text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))]"
-                      }`}
-                    >
-                      Start Project
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="flex items-center space-x-4">
-                
-                <Link
-                  href="/start"
-                  className="hidden md:inline-flex items-center btn-primary shadow-lg hover:shadow-xl transition-all duration-200"
-                >
-                  Get Started
-                </Link>
-
+            <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map((link) => (
                 <button
-                  onClick={() => setMobileMenuOpen(true)}
-                  className="p-2 rounded-lg bg-[hsl(var(--secondary))] hover:bg-[hsl(var(--muted))] md:hidden transition-colors"
-                  aria-label="Toggle menu"
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-secondary transition-all duration-200"
                 >
-                  <Menu className="h-6 w-6 text-[hsl(var(--foreground))]" />
+                  {link.label}
                 </button>
-              </div>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-3">
+              {mounted && (
+                <button
+                  onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+                  aria-label="Toggle theme"
+                >
+                  {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                </button>
+              )}
+
+              <button
+                onClick={() => scrollTo("#contact")}
+                className="hidden md:flex btn-primary text-sm"
+              >
+                <Sparkles size={15} />
+                Get a Quote
+              </button>
+
+              <button
+                onClick={() => setMobileOpen(true)}
+                className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu size={22} />
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-[100] md:hidden">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div className="mobile-menu-panel">
+            <div className="flex items-center justify-between p-5 border-b border-border">
+              <span className="brand-mark text-xl">PRNexGen</span>
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="p-2 rounded-lg hover:bg-secondary transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <nav className="p-4 space-y-1">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary hover:text-primary transition-all"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <div className="pt-4">
+                <button
+                  onClick={() => scrollTo("#contact")}
+                  className="w-full btn-primary justify-center"
+                >
+                  <Sparkles size={15} />
+                  Get a Quote
+                </button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      )}
     </>
   )
 }

@@ -5,114 +5,83 @@ import { ChevronDown, HelpCircle } from "lucide-react"
 
 const faqs = [
   {
-    id: 1,
-    question: "What services does PRNexGen offer?",
-    answer:
-      "We specialize in web & mobile app development, AI automation solutions, cloud & DevOps services, and cybersecurity consulting. Our team helps startups, enterprises, and businesses build scalable and future-ready technology.",
+    q: "What services does PRNexGen offer?",
+    a: "We offer Website Development, Website Maintenance, App Development, Hosting Services, AI-Based Product Shoot, Meta Ads & SEO Marketing, and Graphic Designing — everything you need to build and grow your digital presence.",
   },
   {
-    id: 2,
-    question: "How long does a typical project take?",
-    answer:
-      "Project timelines vary based on complexity and scope. Simple web applications might take 4-8 weeks, while complex enterprise solutions can take 3-6 months. We provide detailed timelines during our initial consultation.",
+    q: "How long does a typical project take?",
+    a: "Timelines vary by scope. A simple website takes 2–4 weeks, a full e-commerce platform 6–10 weeks, and complex enterprise apps 3–6 months. We provide a detailed timeline during our initial consultation.",
   },
   {
-    id: 3,
-    question: "What technologies do you use?",
-    answer:
-      "We use modern, industry-leading technologies including React, Next.js, Node.js, Python, cloud platforms (AWS, Azure, GCP), and AI/ML frameworks. Our tech stack is tailored to each project's specific requirements.",
+    q: "What technologies do you use?",
+    a: "We use modern stacks including Next.js, React, Node.js, TypeScript, React Native, Flutter, and cloud platforms like AWS and Vercel. Our stack is always chosen to best fit your project's needs.",
   },
   {
-    id: 4,
-    question: "What is your pricing model?",
-    answer:
-      "We offer flexible pricing based on project scope and requirements. We can work with fixed-price projects, time-and-materials engagements, or retainer-based arrangements. Contact us for a detailed quote.",
+    q: "What is your pricing model?",
+    a: "We offer flexible pricing — fixed-price for well-defined projects, time-and-materials for evolving scopes, and monthly retainers for ongoing work. Contact us for a free quote tailored to your project.",
   },
   {
-    id: 5,
-    question: "Do you provide ongoing support?",
-    answer:
-      "Yes, we offer comprehensive post-launch support including maintenance, bug fixes, performance optimization, and feature enhancements. We can establish support packages tailored to your needs.",
+    q: "Do you provide ongoing support after launch?",
+    a: "Absolutely. We offer maintenance plans that include updates, security patches, performance monitoring, and feature enhancements. We're your long-term digital partner, not just a one-time vendor.",
   },
   {
-    id: 6,
-    question: "How do we get started?",
-    answer:
-      "Simply reach out to us with your project details. We'll schedule a consultation to understand your requirements, discuss your vision, and provide a detailed proposal with timeline and cost estimates.",
+    q: "How do we get started?",
+    a: "Simply fill out the contact form or call us directly. We'll schedule a free consultation to understand your requirements and provide a detailed proposal within 48 hours.",
   },
 ]
 
 export default function Faq() {
-  const [openItem, setOpenItem] = useState<number | null>(null)
-
-  const toggleItem = (id: number) => {
-    setOpenItem(openItem === id ? null : id)
-  }
+  const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-20 bg-[hsl(var(--secondary))]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div data-animate className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full section-pill text-sm font-medium mb-6">
-            <HelpCircle className="w-4 h-4" />
+    <section id="faq" className="py-24 bg-secondary/30">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="section-pill mb-4">
+            <HelpCircle size={14} />
             FAQ
           </div>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 section-heading">
-            <span className="text-[hsl(var(--foreground))]">
-              Frequently Asked
-            </span>
-            <br />
-            <span className="accent">
-              Questions
-            </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
+            Frequently Asked{" "}
+            <span className="brand-gradient-text">Questions</span>
           </h2>
-          
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed section-copy">
-            Have questions about our services? Find answers to common questions about our IT solutions and how we can help your business.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Have questions? We've got answers. If you don't find what you're looking for, just reach out.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={faq.id}
-                className="surface-card rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+        <div className="space-y-3">
+          {faqs.map(({ q, a }, i) => (
+            <div
+              key={i}
+              className="bg-card border border-border rounded-xl overflow-hidden transition-all duration-200 hover:border-primary/30"
+            >
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between gap-4 p-5 text-left"
               >
-                <button
-                  onClick={() => toggleItem(faq.id)}
-                  className="flex justify-between items-center w-full text-left p-6 font-medium text-[hsl(var(--foreground))] hover:text-[hsl(var(--primary))] transition-colors hover:bg-[hsl(var(--primary)/0.08)]"
-                  aria-expanded={openItem === faq.id}
-                  aria-controls={`faq-answer-${faq.id}`}
-                >
-                  <span className="text-lg font-semibold pr-4">{faq.question}</span>
-                  <ChevronDown
-                    className={`w-6 h-6 transition-transform duration-300 ${
-                      openItem === faq.id ? "rotate-180 text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]"
-                    }`}
-                  />
-                </button>
-                
-                <div
-                  id={`faq-answer-${faq.id}`}
-                  className="overflow-hidden transition-all duration-300"
-                  style={{ maxHeight: openItem === faq.id ? "240px" : "0px", opacity: openItem === faq.id ? 1 : 0 }}
-                >
-                  <div className="px-6 pb-6 text-[hsl(var(--muted-foreground))] leading-relaxed">
-                    {faq.answer}
-                  </div>
-                </div>
+                <span className="font-semibold text-sm md:text-base">{q}</span>
+                <ChevronDown
+                  size={18}
+                  className={`shrink-0 text-muted-foreground transition-transform duration-300 ${open === i ? "rotate-180 text-primary" : ""}`}
+                />
+              </button>
+              <div
+                className="overflow-hidden transition-all duration-300"
+                style={{ maxHeight: open === i ? "200px" : "0px", opacity: open === i ? 1 : 0 }}
+              >
+                <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">{a}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        <div data-animate className="text-center mt-16">
-          <p className="text-lg text-[hsl(var(--muted-foreground))] mb-6">
-            Still have questions? We&apos;re here to help!
-          </p>
-          <button className="inline-flex items-center gap-2 px-8 py-4 btn-primary shadow-lg hover:shadow-xl transition-all duration-300">
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground text-sm mb-4">Still have questions?</p>
+          <button
+            onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+            className="btn-primary"
+          >
             Contact Us
           </button>
         </div>

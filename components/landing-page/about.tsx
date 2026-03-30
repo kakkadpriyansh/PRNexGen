@@ -1,105 +1,94 @@
 "use client"
-import { Users, Award, Clock, Target, Lightbulb, Shield, Code } from "lucide-react"
 
-const features = [
-  {
-    icon: Users,
-    title: "Expert Team",
-    description: "Skilled professionals with years of experience in cutting-edge technologies",
-    tone: "tone-lagoon"
-  },
-  {
-    icon: Award,
-    title: "Proven Results", 
-    description: "15+ successful projects delivered across various industries",
-    tone: "tone-ember"
-  },
-  {
-    icon: Clock,
-    title: "24/7 Support",
-    description: "Round-the-clock support to ensure your business never stops",
-    tone: "tone-olive"
-  },
-  {
-    icon: Target,
-    title: "Results-Driven",
-    description: "Focused on delivering measurable outcomes and ROI", 
-    tone: "tone-cinder"
-  }
-]
+import Image from "next/image"
 
 const stats = [
-  { number: "3+", label: "Years Experience", suffix: "", icon: Clock },
-  { number: "15+", label: "Projects Delivered", suffix: "", icon: Code },
-  { number: "100", label: "Client Satisfaction", suffix: "%", icon: Award },
-  { number: "5", label: "Team Members", suffix: "", icon: Users }
+  { number: "5+", label: "Team Members" },
+  { number: "15+", label: "Happy Clients" },
+  { number: "99%", label: "Client Satisfaction" },
 ]
 
 export default function About() {
   return (
-    <section className="py-20 bg-[hsl(var(--secondary))]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div data-animate className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full section-pill text-sm font-medium">
-              <Target className="w-4 h-4" />
-              Why Choose PRNexGen
+
+          {/* Left — Image Collage */}
+          <div className="about-collage relative">
+            {/* Main large image */}
+            <div className="about-img-main relative rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/modern-office.png"
+                alt="Our team"
+                width={420}
+                height={300}
+                className="w-full h-72 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-semibold mb-6 section-heading">
-              <span className="text-[hsl(var(--foreground))]">
-                Transforming Ideas Into
-              </span>
+            {/* Bottom row — two smaller images */}
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/business-technology-innovation.jpg"
+                  alt="Business"
+                  width={200}
+                  height={160}
+                  className="w-full h-40 object-cover"
+                />
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/tech-digital-abstract-blue.jpg"
+                  alt="Technology"
+                  width={200}
+                  height={160}
+                  className="w-full h-40 object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 about-badge">
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div className="text-xs font-bold">Trusted Agency</div>
+                <div className="text-[10px] text-muted-foreground">Since 2022</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right — Content */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-2 text-primary text-sm font-semibold">
+              <span className="opacity-60">//</span>
+              About Us
+            </div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+              Transforming{" "}
+              <span className="brand-gradient-text">Ideas</span>
               <br />
-              <span className="accent">
-                Digital Reality
-              </span>
+              into Digital Reality
             </h2>
 
-            <p className="text-xl mb-8 leading-relaxed section-copy">
-              We&apos;re your strategic partner in digital transformation, combining innovation with expertise to deliver solutions that drive real business growth.
+            <p className="text-muted-foreground leading-relaxed">
+              We're a passionate team of developers, designers, and digital strategists based in Rajkot, Gujarat. We partner with startups and businesses to build scalable, beautiful digital products that deliver real results.
             </p>
 
-            <div data-animate="stagger" className="grid grid-cols-2 gap-6 mb-8">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  data-animate-child
-                  className="text-center"
-                >
-                  <div className="text-3xl md:text-4xl font-bold stat-number mb-2">
-                    {stat.number}{stat.suffix}
-                  </div>
-                  <div className="text-sm text-[hsl(var(--muted-foreground))]">
-                    {stat.label}
-                  </div>
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-6 py-4">
+              {stats.map(({ number, label }) => (
+                <div key={label} className="text-center">
+                  <div className="text-3xl font-extrabold brand-gradient-text leading-none mb-1">{number}</div>
+                  <div className="text-xs text-muted-foreground font-medium leading-tight">{label}</div>
                 </div>
               ))}
             </div>
-
-            <button className="inline-flex items-center gap-2 px-8 py-4 btn-primary shadow-lg hover:shadow-xl transition-all duration-300">
-              Learn More About Us
-            </button>
-          </div>
-
-          <div data-animate="stagger" className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                data-animate-child
-                className="surface-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${feature.tone} mb-4 shadow-lg`}>
-                  <feature.icon className="w-6 h-6 text-[hsl(var(--primary-foreground))]" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-[hsl(var(--foreground))]">
-                  {feature.title}
-                </h3>
-                <p className="text-[hsl(var(--muted-foreground))] text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

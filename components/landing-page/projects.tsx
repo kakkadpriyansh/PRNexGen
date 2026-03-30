@@ -1,294 +1,260 @@
 "use client"
-import { useState, useEffect } from "react"
-import { ArrowRight, ExternalLink, Code, Smartphone, Globe, ChevronLeft, ChevronRight, Layout } from "lucide-react"
-import Link from "next/link"
-import ProjectModal from "./project-modal"
+
+import { useState } from "react"
+import { ExternalLink, X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
 
 const projects = [
   {
     id: 1,
     title: "Happy Feet E-Commerce",
-    description: "Modern footwear e-commerce platform with comprehensive admin panel for products, orders, and inventory management.",
-    tech: "Next.js • React • Node.js",
+    category: "E-Commerce Platform",
+    tech: ["Next.js", "React", "Node.js"],
+    desc: "Modern footwear e-commerce with advanced admin panel, inventory management, and seamless checkout.",
     image: "/happyfeet-ss.png",
-    tone: "tone-lagoon",
-    icon: Smartphone,
-    fullDescription: "Happy Feet is a comprehensive e-commerce solution built for modern footwear retailers. The platform features a sleek customer-facing storefront with advanced filtering, wishlist functionality, and seamless checkout process. The robust admin panel provides complete control over inventory, orders, customer management, and detailed analytics to drive business growth.",
     liveUrl: "https://happy-feet.in/",
-    features: [
-      "Advanced Product Filtering",
-      "Real-time Inventory Management",
-      "Secure Payment Integration",
-      "Order Tracking System",
-      "Customer Analytics Dashboard",
-      "Mobile-Responsive Design"
-    ],
-    duration: "3 months",
-    team: "4 developers",
-    category: "E-Commerce Platform"
+    features: ["Advanced Product Filtering", "Real-time Inventory", "Secure Payments", "Order Tracking", "Analytics Dashboard"],
   },
   {
     id: 2,
     title: "Avid Explorers Travel",
-    description: "Full-stack travel booking platform with itinerary management and complete admin dashboard for packages.",
-    tech: "Next.js • MongoDB • Stripe",
-    image: "/avid-photo.png",
+    category: "Travel Platform",
+    tech: ["Next.js", "MongoDB", "Stripe"],
+    desc: "Full-stack travel booking platform with itinerary management and complete admin dashboard.",
     images: [
       "/Avid Image/Screenshot 2026-02-17 171318.png",
       "/Avid Image/Screenshot 2026-02-17 171333.png",
       "/Avid Image/Screenshot 2026-02-17 171403.png",
-      "/Avid Image/Screenshot 2026-02-17 171416.png"
+      "/Avid Image/Screenshot 2026-02-17 171416.png",
     ],
-    tone: "tone-ember",
-    icon: Globe,
-    fullDescription: "Avid Explorers is a comprehensive travel platform that connects adventure seekers with unique travel experiences. The platform features intelligent booking systems, personalized itinerary creation, and seamless payment processing. Travel agencies can manage their packages, track bookings, and analyze customer preferences through the powerful admin dashboard.",
     liveUrl: "https://dev.avidexplorers.in/",
-    features: [
-      "Smart Booking System",
-      "Custom Itinerary Builder",
-      "Multi-currency Support",
-      "Real-time Availability",
-      "Travel Package Management",
-      "Customer Review System"
-    ],
-    duration: "4 months",
-    team: "5 developers",
-    category: "Travel Platform"
+    features: ["Smart Booking System", "Itinerary Builder", "Multi-currency", "Real-time Availability", "Review System"],
   },
   {
     id: 3,
     title: "BDVH Education Platform",
-    description: "Role-based education management system with dashboards for teachers, students, and administrative staff.",
-    tech: "Next.js • PostgreSQL • Auth",
-    image: "/bdvh-ss.png",
+    category: "EdTech Platform",
+    tech: ["Next.js", "PostgreSQL", "Auth"],
+    desc: "Role-based education management system with dashboards for teachers, students, and admins.",
     images: [
       "/BDVH Software/Screenshot 2026-02-12 131730.png",
       "/BDVH Software/Screenshot 2026-02-12 131806.png",
       "/BDVH Software/Screenshot 2026-02-12 131937.png",
       "/BDVH Software/Screenshot 2026-02-12 132011.png",
-      "/BDVH Software/Screenshot 2026-02-12 132751.png"
     ],
-    tone: "tone-olive",
-    icon: Code,
-    fullDescription: "BDVH is a sophisticated education management platform designed to streamline academic operations. The system provides role-based access for teachers, students, and administrators, featuring comprehensive class management, assignment tracking, grade management, and communication tools. The platform enhances the educational experience through digital transformation.",
     liveUrl: "https://crm.bdvhinstitute.com",
-    features: [
-      "Role-based Access Control",
-      "Class & Assignment Management",
-      "Grade Tracking System",
-      "Teacher-Student Communication",
-      "Attendance Management",
-      "Performance Analytics"
-    ],
-    duration: "5 months",
-    team: "6 developers",
-    category: "Education Platform"
+    features: ["Role-based Access", "Class Management", "Grade Tracking", "Attendance", "Performance Analytics"],
   },
   {
     id: 4,
     title: "BDVH Website CMS",
-    description: "Custom CMS website with inline on-page editing, bilingual i18n (English-Hindi), role-based authentication, and type-safe full-stack architecture.",
-    tech: "Next.js • i18n • CMS",
+    category: "CMS Platform",
+    tech: ["Next.js", "i18n", "REST API"],
+    desc: "Custom CMS with inline on-page editing, bilingual i18n (English-Hindi), and role-based auth.",
     images: [
       "/BDVH image/Screenshot 2026-02-17 171904.png",
       "/BDVH image/Screenshot 2026-02-17 171921.png",
       "/BDVH image/Screenshot 2026-02-17 171945.png",
-      "/BDVH image/Screenshot 2026-02-17 172013.png"
+      "/BDVH image/Screenshot 2026-02-17 172013.png",
     ],
-    tone: "tone-cinder",
-    icon: Layout,
-    fullDescription: "BDVH Institute's custom CMS website features advanced inline on-page editing capabilities, allowing content managers to update website content in real-time. The platform supports bilingual content management with English-Hindi internationalization, role-based authentication for secure access control, and a type-safe full-stack architecture built with Next.js App Router and REST APIs for optimal performance and maintainability.",
     liveUrl: "https://bdvh.prnexgen.in/",
-    features: [
-      "Inline On-Page Editing",
-      "Bilingual i18n (English-Hindi)",
-      "Role-based Authentication",
-      "Type-safe Architecture",
-      "App Router Integration",
-      "REST API Backend"
-    ],
-    duration: "3 months",
-    team: "3 developers",
-    category: "CMS Platform"
-  }
+    features: ["Inline Editing", "Bilingual i18n", "Role-based Auth", "Type-safe Architecture", "REST API"],
+  },
 ]
 
-export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
-  const [currentImageIndex, setCurrentImageIndex] = useState<{[key: number]: number}>(() => {
-    const initial: {[key: number]: number} = {}
-    projects.forEach(project => {
-      if (project.images) {
-        initial[project.id] = 0
-      }
-    })
-    return initial
-  })
+type Project = typeof projects[0]
 
-  useEffect(() => {
-    return () => {}
-  }, [])
-
-  const handlePrevImage = (projectId: number, imagesLength: number) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [projectId]: ((prev[projectId] || 0) - 1 + imagesLength) % imagesLength
-    }))
-  }
-
-  const handleNextImage = (projectId: number, imagesLength: number) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [projectId]: ((prev[projectId] || 0) + 1) % imagesLength
-    }))
-  }
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [imgIdx, setImgIdx] = useState(0)
+  const images = project.images || (project.image ? [project.image] : [])
 
   return (
-    <section className="py-24 bg-[hsl(var(--background))] relative overflow-hidden">
-      <div className="absolute inset-0">
-        <div data-float className="absolute top-20 left-20 w-72 h-72 bg-[hsl(var(--accent)/0.18)] rounded-full blur-3xl" />
-        <div data-float className="absolute bottom-20 right-20 w-96 h-96 bg-[hsl(var(--primary)/0.2)] rounded-full blur-3xl" />
-      </div>
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative bg-card border border-border rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-secondary hover:bg-muted transition-colors"
+        >
+          <X size={18} />
+        </button>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div data-animate className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full section-pill text-sm font-semibold mb-8 shadow-lg">
-            <Code className="w-5 h-5" />
-            Our Portfolio
+        {images.length > 0 && (
+          <div className="relative h-64 bg-secondary overflow-hidden rounded-t-2xl">
+            <img src={images[imgIdx]} alt={project.title} className="w-full h-full object-contain" />
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={() => setImgIdx((i) => (i - 1 + images.length) % images.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={() => setImgIdx((i) => (i + 1) % images.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                >
+                  <ChevronRight size={18} />
+                </button>
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {images.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setImgIdx(i)}
+                      className={`h-1.5 rounded-full transition-all ${i === imgIdx ? "w-6 bg-primary" : "w-1.5 bg-white/50"}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
-          
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold mb-6 section-heading">
-            <span className="text-[hsl(var(--foreground))]">
-              Explore Our
-            </span>
-            <br />
-            <span className="accent">
-              Latest Projects
-            </span>
+        )}
+
+        <div className="p-6">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <span className="section-pill text-xs mb-2 inline-flex">{project.category}</span>
+              <h3 className="text-2xl font-bold">{project.title}</h3>
+            </div>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-sm shrink-0"
+              >
+                Live Site <ExternalLink size={14} />
+              </a>
+            )}
+          </div>
+          <p className="text-muted-foreground mb-5 leading-relaxed">{project.desc}</p>
+          <div className="flex flex-wrap gap-2 mb-5">
+            {project.tech.map((t) => (
+              <span key={t} className="px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
+                {t}
+              </span>
+            ))}
+          </div>
+          <h4 className="font-bold mb-3">Key Features</h4>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {project.features.map((f) => (
+              <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Projects() {
+  const [selected, setSelected] = useState<Project | null>(null)
+  const [imgIndexes, setImgIndexes] = useState<Record<number, number>>({})
+
+  const getImages = (p: Project) => p.images || (p.image ? [p.image] : [])
+
+  const prev = (id: number, len: number) =>
+    setImgIndexes((s) => ({ ...s, [id]: ((s[id] ?? 0) - 1 + len) % len }))
+  const next = (id: number, len: number) =>
+    setImgIndexes((s) => ({ ...s, [id]: ((s[id] ?? 0) + 1) % len }))
+
+  return (
+    <section id="projects" className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="section-pill mb-4">Our Portfolio</div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
+            Work We're{" "}
+            <span className="brand-gradient-text">Proud Of</span>
           </h2>
-          
-          <p className="text-xl max-w-4xl mx-auto leading-relaxed section-copy">
-            From web and mobile applications to AI automation and cloud solutions, our work helps businesses scale smarter and achieve their digital goals.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Real projects, real results. Here's a glimpse of what we've built for our clients.
           </p>
         </div>
 
-        <div data-animate="stagger" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              data-animate-child
-              className="group relative surface-card rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
-            >
-              <div className="relative h-80 bg-[hsl(var(--secondary))] flex items-center justify-center cursor-pointer" onClick={() => setSelectedProject(project)}>
-                {project.images ? (
-                  <>
-                    <img
-                      key={currentImageIndex[project.id] || 0}
-                      src={project.images[currentImageIndex[project.id] || 0]}
-                      alt={`${project.title} - Image ${(currentImageIndex[project.id] || 0) + 1}`}
-                      className="max-w-full max-h-full object-contain pointer-events-none"
-                    />
-                    
-                    {/* Carousel Controls */}
-                    <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault()
-                          e.stopPropagation()
-                          handlePrevImage(project.id, project.images!.length)
-                        }}
-                        className="w-10 h-10 rounded-full bg-[hsl(var(--background)/0.85)] hover:bg-[hsl(var(--background))] flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-20"
-                        aria-label="Previous image"
-                      >
-                        <ChevronLeft className="w-6 h-6 text-[hsl(var(--foreground))]" />
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault()
-                          e.stopPropagation()
-                          handleNextImage(project.id, project.images!.length)
-                        }}
-                        className="w-10 h-10 rounded-full bg-[hsl(var(--background)/0.85)] hover:bg-[hsl(var(--background))] flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-20"
-                        aria-label="Next image"
-                      >
-                        <ChevronRight className="w-6 h-6 text-[hsl(var(--foreground))]" />
-                      </button>
-                    </div>
-
-                    {/* Image Indicators */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-                      {project.images.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={(e) => {
-                            e.preventDefault()
-                            e.stopPropagation()
-                            setCurrentImageIndex(prev => ({ ...prev, [project.id]: idx }))
-                          }}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            idx === (currentImageIndex[project.id] || 0)
-                              ? 'bg-[hsl(var(--foreground))] w-8'
-                              : 'bg-[hsl(var(--foreground)/0.4)] hover:bg-[hsl(var(--foreground)/0.6)]'
-                          }`}
-                          aria-label={`Go to image ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
-                )}
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              </div>
-
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-3 h-3 rounded-full ${project.tone}`} />
-                  <span className="text-sm font-medium text-[hsl(var(--muted-foreground))] uppercase tracking-wide">
-                    {project.tech}
-                  </span>
-                </div>
-                
-                <h3 className="text-2xl font-semibold text-[hsl(var(--foreground))] mb-3 group-hover:text-[hsl(var(--primary))] transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-[hsl(var(--muted-foreground))] leading-relaxed mb-6">
-                  {project.description}
-                </p>
-
-                <button
-                  onClick={() => setSelectedProject(project)}
-                  className="flex items-center gap-2 text-[hsl(var(--primary))] font-semibold cursor-pointer group/btn"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => {
+            const images = getImages(project)
+            const idx = imgIndexes[project.id] ?? 0
+            return (
+              <div key={project.id} className="project-card group">
+                <div
+                  className="relative h-56 bg-secondary cursor-pointer overflow-hidden"
+                  onClick={() => setSelected(project)}
                 >
-                  <span>View Project</span>
-                  <ExternalLink className="w-5 h-5 group-hover/btn:text-[hsl(var(--accent))] transition-colors" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+                  {images.length > 0 && (
+                    <img
+                      src={images[idx]}
+                      alt={project.title}
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                  )}
+                  {images.length > 1 && (
+                    <>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); prev(project.id, images.length) }}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-background/80 opacity-0 group-hover:opacity-100 transition-all hover:bg-background"
+                      >
+                        <ChevronLeft size={16} />
+                      </button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); next(project.id, images.length) }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-background/80 opacity-0 group-hover:opacity-100 transition-all hover:bg-background"
+                      >
+                        <ChevronRight size={16} />
+                      </button>
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                        {images.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={(e) => { e.stopPropagation(); setImgIndexes((s) => ({ ...s, [project.id]: i })) }}
+                            className={`h-1 rounded-full transition-all ${i === idx ? "w-5 bg-primary" : "w-1 bg-white/50"}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
 
-        <div data-animate className="text-center">
-          <Link
-            href="/portfolio"
-            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
-          >
-            <span className="relative z-10">View All Projects</span>
-            <ArrowRight className="w-6 h-6 relative z-10" />
-          </Link>
+                <div className="p-6">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.tech.map((t) => (
+                      <span key={t} className="px-2.5 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/15">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{project.desc}</p>
+                  <div className="flex items-center gap-4">
+                    <button
+                      onClick={() => setSelected(project)}
+                      className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all"
+                    >
+                      View Details <ArrowRight size={15} />
+                    </button>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        Live Site <ExternalLink size={13} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
 
-      <ProjectModal 
-        project={selectedProject} 
-        onClose={() => setSelectedProject(null)} 
-      />
+      {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
     </section>
   )
 }
