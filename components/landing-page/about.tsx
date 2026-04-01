@@ -19,7 +19,7 @@ export default function About() {
             {/* Main large image */}
             <div className="about-img-main relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/modern-office.png"
+                src="/ai-content-generation-interface.jpg"
                 alt="Our team"
                 width={420}
                 height={300}
@@ -32,7 +32,7 @@ export default function About() {
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/business-technology-innovation.jpg"
+                  src="/modern-ecommerce-marketplace-interface.jpg"
                   alt="Business"
                   width={200}
                   height={160}
@@ -41,7 +41,7 @@ export default function About() {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/tech-digital-abstract-blue.jpg"
+                  src="/data-dashboard.png"
                   alt="Technology"
                   width={200}
                   height={160}

@@ -71,8 +71,7 @@ export default function Contact() {
             <div className="space-y-5">
               {[
                 { icon: Mail, label: "Email", value: "prnexgen@yahoo.com", href: "mailto:prnexgen@yahoo.com" },
-                { icon: Phone, label: "Phone", value: "+91 99799 93097", href: "tel:+919979993097" },
-                { icon: Phone, label: "Phone", value: "+91 91734 73491", href: "tel:+919173473491" },
+                { icon: Phone, label: "Phone", value: "8401661887 | 99799 93097", href: "tel:+918401661887" },
                 { icon: MapPin, label: "Location", value: "Rajkot, Gujarat, India", href: null },
               ].map(({ icon: Icon, label, value, href }) => (
                 <div key={value} className="flex items-start gap-4">

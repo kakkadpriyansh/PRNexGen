@@ -6,7 +6,7 @@ export default function WhatsAppFloat() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
       <div data-float className="transition-transform duration-300">
         <a
-          href="https://wa.me/919173473491"
+          href="https://wa.me/918401661887"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-14 h-14 bg-[#18B66B] hover:bg-[#159A5D] rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
@@ -19,7 +19,7 @@ export default function WhatsAppFloat() {
 
       <div data-float className="transition-transform duration-300">
         <a
-          href="tel:+919173473491"
+          href="tel:+918401661887"
           className="flex items-center justify-center w-14 h-14 bg-[#2B4B8F] hover:bg-[#243E77] rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
