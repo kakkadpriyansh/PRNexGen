@@ -57,8 +57,9 @@ export default function Hero() {
           </div>
 
           {/* Right — Image Collage */}
-          <div className="relative hidden lg:block">
-            <div className="hero-collage">
+          <div className="relative">
+            {/* Desktop version */}
+            <div className="hero-collage hidden lg:block">
               {/* Main large image */}
               <div className="hero-img-main">
                 <Image
@@ -106,6 +107,35 @@ export default function Hero() {
               <div className="hero-exp-badge">
                 <div className="text-2xl font-extrabold text-white leading-none">3+</div>
                 <div className="text-[10px] text-white/70 font-medium">Years of<br/>Excellence</div>
+              </div>
+            </div>
+
+            {/* Mobile version - Simplified single image */}
+            <div className="lg:hidden relative w-full h-64 rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
+              <Image
+                src="/modern-office.png"
+                alt="Team working"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent" />
+              
+              {/* Mobile floating badges */}
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                <div className="flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg">
+                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white">100% Satisfaction</div>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col items-center px-3 py-2 bg-gradient-to-br from-primary to-accent rounded-lg shadow-lg">
+                  <div className="text-xl font-extrabold text-white leading-none">3+</div>
+                  <div className="text-[9px] text-white/80 font-medium text-center">Years</div>
+                </div>
               </div>
             </div>
           </div>

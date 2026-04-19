@@ -83,10 +83,10 @@ export default function Header() {
 
               <button
                 onClick={() => setMobileOpen(true)}
-                className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+                className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors text-foreground"
                 aria-label="Open menu"
               >
-                <Menu size={22} />
+                <Menu size={24} className="text-foreground" />
               </button>
             </div>
           </div>
