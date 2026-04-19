@@ -9,14 +9,14 @@ export async function POST(request: Request) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "kakkadpriyansh@gmail.com",
-        pass: "xstn npfz uiqu esfb",
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     })
 
     const mailOptions = {
-      from: "kakkadpriyansh@gmail.com",
-      to: "prnexgen@yahoo.com",
+      from: process.env.SMTP_USER,
+      to: process.env.SMTP_TO,
       subject: `🔔 New Inquiry from ${name}`,
       html: `
         <!DOCTYPE html>
