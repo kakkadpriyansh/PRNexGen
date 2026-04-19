@@ -9,6 +9,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
+  { label: "Plans", href: "/plans", external: true },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ]
@@ -26,8 +27,12 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const scrollTo = (href: string) => {
+  const scrollTo = (href: string, external?: boolean) => {
     setMobileOpen(false)
+    if (external) {
+      window.location.href = href
+      return
+    }
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: "smooth" })
   }
@@ -49,7 +54,7 @@ export default function Header() {
               {navLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => scrollTo(link.href)}
+                  onClick={() => scrollTo(link.href, link.external)}
                   className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-secondary transition-all duration-200"
                 >
                   {link.label}
@@ -109,7 +114,7 @@ export default function Header() {
               {navLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => scrollTo(link.href)}
+                  onClick={() => scrollTo(link.href, link.external)}
                   className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-foreground hover:bg-secondary hover:text-primary transition-all"
                 >
                   {link.label}
