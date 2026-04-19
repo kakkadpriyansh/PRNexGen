@@ -5,8 +5,33 @@ export async function POST(request: Request) {
   console.log('📧 [EMAIL API] Request received at:', new Date().toISOString())
   
   try {
+    // Check environment variables first
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.SMTP_TO) {
+      console.error('❌ [EMAIL API] Missing environment variables!')
+      console.error('SMTP_USER:', process.env.SMTP_USER ? 'Set' : 'Missing')
+      console.error('SMTP_PASS:', process.env.SMTP_PASS ? 'Set' : 'Missing')
+      console.error('SMTP_TO:', process.env.SMTP_TO ? 'Set' : 'Missing')
+      
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: "SMTP configuration missing. Please check environment variables."
+        },
+        { status: 500 }
+      )
+    }
+    
     const body = await request.json()
     const { name, email, phone, service, message } = body
+    
+    // Validate required fields
+    if (!name || !email || !message) {
+      console.error('❌ [EMAIL API] Missing required fields')
+      return NextResponse.json(
+        { success: false, message: "Missing required fields" },
+        { status: 400 }
+      )
+    }
     
     console.log('📝 [EMAIL API] Form data received:', {
       name,
@@ -29,6 +54,16 @@ export async function POST(request: Request) {
     })
 
     console.log('✅ [EMAIL API] Transporter configured successfully')
+    
+    // Verify transporter connection
+    console.log('🔍 [EMAIL API] Verifying SMTP connection...')
+    try {
+      await transporter.verify()
+      console.log('✅ [EMAIL API] SMTP connection verified')
+    } catch (verifyError) {
+      console.error('❌ [EMAIL API] SMTP verification failed:', verifyError)
+      throw verifyError
+    }
 
     const mailOptions = {
       from: process.env.SMTP_USER,
@@ -112,6 +147,7 @@ export async function POST(request: Request) {
     console.error('❌ [EMAIL API] Error occurred:')
     console.error('❌ [EMAIL API] Error name:', error instanceof Error ? error.name : 'Unknown')
     console.error('❌ [EMAIL API] Error message:', error instanceof Error ? error.message : error)
+    console.error('❌ [EMAIL API] Error stack:', error instanceof Error ? error.stack : 'No stack trace')
     console.error('❌ [EMAIL API] Full error:', error)
     
     return NextResponse.json(
