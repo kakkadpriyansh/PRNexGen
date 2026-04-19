@@ -37,11 +37,29 @@ export default function Contact() {
     const errs = validate(form)
     if (Object.keys(errs).length) { setErrors(errs); return }
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1500))
-    setLoading(false)
-    setSuccess(true)
-    setForm({ name: "", email: "", phone: "", service: "", message: "" })
-    setTimeout(() => setSuccess(false), 5000)
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      
+      const data = await response.json()
+      
+      if (data.success) {
+        setSuccess(true)
+        setForm({ name: "", email: "", phone: "", service: "", message: "" })
+        setTimeout(() => setSuccess(false), 5000)
+      } else {
+        alert('Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Failed to send message. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

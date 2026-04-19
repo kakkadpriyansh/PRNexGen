@@ -11,6 +11,8 @@ export default function ProjectForm() {
     email: "",
     phone: "",
   })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -20,10 +22,38 @@ export default function ProjectForm() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Handle form submission
-    console.log("Form submitted:", formData)
+    setLoading(true)
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          service: "Project Inquiry",
+          message: "New project inquiry from Start Project page",
+        }),
+      })
+      
+      const data = await response.json()
+      
+      if (data.success) {
+        setSuccess(true)
+        setFormData({ firstName: "", lastName: "", email: "", phone: "" })
+        setTimeout(() => setSuccess(false), 5000)
+      } else {
+        alert('Failed to submit. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('Failed to submit. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const isFormValid = formData.firstName && formData.lastName && formData.email
@@ -133,16 +163,22 @@ export default function ProjectForm() {
             <div className="pt-6">
               <button
                 type="submit"
-                disabled={!isFormValid}
+                disabled={!isFormValid || loading}
                 className={`w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 ${
-                  isFormValid
+                  isFormValid && !loading
                     ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-indigo-700"
                     : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed"
                 }`}
               >
-                {isFormValid ? "Start Your Project" : "Please Fill Required Fields"}
+                {loading ? "Submitting..." : isFormValid ? "Start Your Project" : "Please Fill Required Fields"}
                 <ArrowRight className="w-5 h-5" />
               </button>
+              
+              {success && (
+                <div className="mt-4 p-4 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-xl text-center">
+                  <p className="text-green-700 dark:text-green-300 font-semibold">✅ Submitted successfully! We'll contact you soon.</p>
+                </div>
+              )}
             </div>
           </form>
         </div>
