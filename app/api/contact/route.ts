@@ -2,10 +2,24 @@ import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
 
 export async function POST(request: Request) {
+  console.log('📧 [EMAIL API] Request received at:', new Date().toISOString())
+  
   try {
     const body = await request.json()
     const { name, email, phone, service, message } = body
+    
+    console.log('📝 [EMAIL API] Form data received:', {
+      name,
+      email,
+      phone: phone || 'Not provided',
+      service: service || 'Not specified',
+      messageLength: message?.length || 0
+    })
 
+    console.log('🔧 [EMAIL API] Configuring SMTP transporter...')
+    console.log('📮 [EMAIL API] SMTP User:', process.env.SMTP_USER)
+    console.log('📮 [EMAIL API] SMTP To:', process.env.SMTP_TO)
+    
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -13,6 +27,8 @@ export async function POST(request: Request) {
         pass: process.env.SMTP_PASS,
       },
     })
+
+    console.log('✅ [EMAIL API] Transporter configured successfully')
 
     const mailOptions = {
       from: process.env.SMTP_USER,
@@ -80,13 +96,30 @@ export async function POST(request: Request) {
       `,
     }
 
-    await transporter.sendMail(mailOptions)
+    console.log('📤 [EMAIL API] Sending email...')
+    const info = await transporter.sendMail(mailOptions)
+    
+    console.log('✅ [EMAIL API] Email sent successfully!')
+    console.log('📬 [EMAIL API] Message ID:', info.messageId)
+    console.log('📊 [EMAIL API] Response:', info.response)
 
-    return NextResponse.json({ success: true, message: "Email sent successfully" })
+    return NextResponse.json({ 
+      success: true, 
+      message: "Email sent successfully",
+      messageId: info.messageId 
+    })
   } catch (error) {
-    console.error("Email error:", error)
+    console.error('❌ [EMAIL API] Error occurred:')
+    console.error('❌ [EMAIL API] Error name:', error instanceof Error ? error.name : 'Unknown')
+    console.error('❌ [EMAIL API] Error message:', error instanceof Error ? error.message : error)
+    console.error('❌ [EMAIL API] Full error:', error)
+    
     return NextResponse.json(
-      { success: false, message: "Failed to send email" },
+      { 
+        success: false, 
+        message: "Failed to send email",
+        error: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     )
   }
