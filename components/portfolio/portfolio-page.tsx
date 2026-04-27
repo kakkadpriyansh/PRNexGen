@@ -27,7 +27,7 @@ const projects = [
     description: "Full-stack travel booking platform with itinerary management and complete admin dashboard for packages.",
     tech: "Next.js • MongoDB • Stripe",
     image: "/avid-photo.png",
-    liveUrl: "https://dev.avidexplorers.in/",
+    liveUrl: "https://avidexplorers.in/",
     category: "Travel Platform"
   },
   {

@@ -90,7 +90,7 @@ function getFallbackPortfolioData(): PortfolioItem[] {
       mainImage: "/avid-photo.png",
       shortDescription:
         "Responsive travel platform with booking, itineraries, and full admin panel for packages and content.",
-      projectUrl: "https://dev.avidexplorers.in",
+      projectUrl: "https://avidexplorers.in",
       content:
         `<h3>Project Overview</h3><p>A fully responsive travel website developed with Next.js, enabling users to explore destinations, book trips, and plan itineraries. Includes a full admin panel to manage travel packages, bookings, content, and user inquiries.</p><h3>Key Features</h3><ul><li>SSR & SSG with Next.js</li><li>Travel package booking system</li><li>User login/signup & dashboard</li><li>Full admin panel for package, booking, and content management</li></ul>`,
       sortOrder: "2024-02-12",

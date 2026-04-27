@@ -26,7 +26,7 @@ const projects = [
       "/Avid Image/Screenshot 2026-02-17 171403.png",
       "/Avid Image/Screenshot 2026-02-17 171416.png",
     ],
-    liveUrl: "https://dev.avidexplorers.in/",
+    liveUrl: "https://avidexplorers.in/",
     features: ["Smart Booking System", "Itinerary Builder", "Multi-currency", "Real-time Availability", "Review System"],
   },
   {
