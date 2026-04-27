@@ -17,7 +17,6 @@ export default function LandingPage() {
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <Ticker />
       <About />
       <Services />
       <Ticker />

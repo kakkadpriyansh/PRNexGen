@@ -1,6 +1,7 @@
 "use client"
 
 import { ArrowRight, MoveRight } from "lucide-react"
+import Ticker from "./ticker"
 
 export default function Hero() {
   const scrollTo = (href: string) => {
@@ -89,6 +90,10 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 z-20">
+        <Ticker />
       </div>
     </section>
   )
