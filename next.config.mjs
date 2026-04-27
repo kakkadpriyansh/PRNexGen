@@ -13,6 +13,11 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  experimental: {
+    turbo: {
+      root: process.cwd(),
+    },
+  },
 }
 
 export default nextConfig

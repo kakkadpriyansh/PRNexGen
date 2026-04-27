@@ -47,16 +47,17 @@ export default function Contact() {
       
       const data = await response.json()
       
-      if (data.success) {
+      if (response.ok && data.success) {
         setSuccess(true)
         setForm({ name: "", email: "", phone: "", service: "", message: "" })
         setTimeout(() => setSuccess(false), 5000)
       } else {
-        alert('Failed to send message. Please try again.')
+        console.error('Server error:', data)
+        alert(`Failed to send message: ${data.error || data.message || 'Unknown error'}. Please try again or contact us directly.`)
       }
     } catch (error) {
-      console.error('Error:', error)
-      alert('Failed to send message. Please try again.')
+      console.error('Network error:', error)
+      alert('Network error. Please check your connection and try again, or contact us directly at prnexgen@yahoo.com')
     } finally {
       setLoading(false)
     }
