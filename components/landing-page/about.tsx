@@ -3,9 +3,9 @@
 import Image from "next/image"
 
 const stats = [
-  { number: "5+", label: "Team Members" },
-  { number: "15+", label: "Happy Clients" },
-  { number: "99%", label: "Client Satisfaction" },
+  { number: "50+", label: "Projects Delivered" },
+  { number: "10+", label: "Industries Served" },
+  { number: "95%", label: "Client Satisfaction" },
 ]
 
 export default function About() {
@@ -56,28 +56,26 @@ export default function About() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
               <div>
-                <div className="text-xs font-bold">Trusted Agency</div>
-                <div className="text-[10px] text-muted-foreground">Since 2022</div>
+                <div className="text-xs font-bold">Trusted by Growing Businesses</div>
               </div>
             </div>
           </div>
 
           {/* Right — Content */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2 text-primary text-sm font-semibold">
+            <div className="flex items-center gap-2 text-primary text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] sm:tracking-[0.25em] uppercase">
               <span className="opacity-60">{'//'}</span>
-              About Us
+              Who We Help
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
-              Transforming{" "}
-              <span className="brand-gradient-text">Ideas</span>
-              <br />
-              into Digital Reality
+              We Build{" "}
+              <span className="brand-gradient-text">Scalable Digital Products</span>{" "}
+              That Drive Growth
             </h2>
 
             <p className="text-muted-foreground leading-relaxed">
-              We&apos;re a passionate team of developers, designers, and digital strategists based in Rajkot, Gujarat. We partner with startups and businesses to build scalable, beautiful digital products that deliver real results.
+              We work with startups, founders, and growing businesses to design and develop high-performance web apps, AI solutions, and scalable systems. Our focus is on building products that are fast, reliable, and built to grow your business.
             </p>
 
             {/* Stats row */}

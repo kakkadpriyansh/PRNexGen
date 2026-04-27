@@ -53,21 +53,23 @@ export default function Services() {
         {/* Header row — left title + right button */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <div className="flex items-center gap-2 text-primary text-sm font-semibold mb-3">
+            <div className="flex items-center gap-2 text-primary text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] sm:tracking-[0.25em] uppercase mb-3">
               <span className="opacity-60">{'//'}</span>
-              Our Services
+              What We Do
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
-              Services We Provide to
-              <br />
-              <span className="brand-gradient-text">Elevate Your Business</span>
+              Solutions Designed to{" "}
+              <span className="brand-gradient-text">Scale Your Business</span>
             </h2>
+            <p className="mt-4 text-muted-foreground text-sm sm:text-base leading-relaxed max-w-2xl">
+              From MVPs to full-scale systems — we build fast, scalable, and future-ready solutions.
+            </p>
           </div>
           <button
             onClick={() => scrollTo("#contact")}
             className="btn-primary shrink-0 self-start sm:self-auto"
           >
-            View All Services
+            Explore Our Solutions
             <ArrowRight size={16} />
           </button>
         </div>
