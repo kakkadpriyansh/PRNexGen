@@ -10,30 +10,53 @@ export interface PortfolioItem {
   categories?: string[] // We'll add this for filtering
 }
 
-// Add a check for client-side environment at the top of the fetchPortfolioData function
+let serverPortfolioCache: PortfolioItem[] | null = null
 
 export async function fetchPortfolioData(): Promise<PortfolioItem[]> {
+  if (typeof window === "undefined" && serverPortfolioCache) {
+    return serverPortfolioCache
+  }
+
   // Use a cache to avoid refetching the data multiple times
   if (typeof window !== "undefined" && (window as any).__portfolioCache) {
     return (window as any).__portfolioCache
   }
 
   try {
-    // Use local sample file as primary source for template
-    const response = await fetch("/data/portfolio-sample.csv", {
-      cache: "force-cache",
-    })
+    const csvText =
+      typeof window === "undefined"
+        ? await (async () => {
+            const path = await import("node:path")
+            const { readFile } = await import("node:fs/promises")
+            const csvPath = path.join(
+              process.cwd(),
+              "public",
+              "data",
+              "portfolio-sample.csv",
+            )
+            return readFile(csvPath, "utf8")
+          })()
+        : await (async () => {
+            const response = await fetch("/data/portfolio-sample.csv", {
+              cache: "force-cache",
+            })
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch portfolio CSV: ${response.status}`)
-    }
+            if (!response.ok) {
+              throw new Error(`Failed to fetch portfolio CSV: ${response.status}`)
+            }
 
-    const csvText = await response.text()
+            return response.text()
+          })()
+
     const parsedData = parseCSV(csvText)
 
     // Cache the data on the client side
     if (typeof window !== "undefined") {
       ;(window as any).__portfolioCache = parsedData
+    }
+
+    if (typeof window === "undefined") {
+      serverPortfolioCache = parsedData
     }
 
     return parsedData
@@ -97,7 +120,7 @@ function parseCSV(csvText: string): PortfolioItem[] {
   const headers = lines[0].split(",").map((header) => header.trim().replace(/^"/, "").replace(/"$/, ""))
 
   // Map CSV columns to our interface properties
-  const columnMap: Record<string, keyof PortfolioItem> = {
+  const columnMap: Record<string, Exclude<keyof PortfolioItem, "categories">> = {
     Slug: "slug",
     Title: "title",
     Logo: "logo",
