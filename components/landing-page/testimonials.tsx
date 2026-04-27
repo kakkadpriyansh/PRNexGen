@@ -41,7 +41,7 @@ export default function Testimonials() {
             <span className="brand-gradient-text">Say</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Don't just take our word for it — here's what our clients have to say about working with PRNexGen.
+            Don&apos;t just take our word for it — here&apos;s what our clients have to say about working with PRNexGen.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export default function Testimonials() {
               </div>
 
               <p className="text-sm text-muted-foreground leading-relaxed mb-6 italic">
-                "{t.content}"
+                &ldquo;{t.content}&rdquo;
               </p>
 
               <div className="flex items-center gap-3">

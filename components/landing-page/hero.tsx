@@ -21,7 +21,7 @@ export default function Hero() {
           {/* Left — Text */}
           <div className="space-y-7">
             <div className="flex items-center gap-2 text-primary text-sm font-semibold">
-              <span className="text-primary opacity-70">//</span>
+              <span className="text-primary opacity-70">{'//'}</span>
               Experience The Best IT Solutions
             </div>
 

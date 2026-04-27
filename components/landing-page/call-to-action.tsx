@@ -22,13 +22,13 @@ export default function CallToAction() {
         </div>
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-          Let's Build Your Next
+          Let&apos;s Build Your Next
           <br />
           <span className="text-white/80">Digital Project Together</span>
         </h2>
 
         <p className="text-white/75 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-          From idea to launch — we're your end-to-end digital partner. Let's discuss your vision and create a roadmap for success.
+          From idea to launch — we&apos;re your end-to-end digital partner. Let&apos;s discuss your vision and create a roadmap for success.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

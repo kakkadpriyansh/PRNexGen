@@ -166,11 +166,11 @@ export default function Projects() {
         <div className="text-center mb-16">
           <div className="section-pill mb-4">Our Portfolio</div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Work We're{" "}
+            Work We&apos;re{" "}
             <span className="brand-gradient-text">Proud Of</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real projects, real results. Here's a glimpse of what we've built for our clients.
+            Real projects, real results. Here&apos;s a glimpse of what we&apos;ve built for our clients.
           </p>
         </div>
 

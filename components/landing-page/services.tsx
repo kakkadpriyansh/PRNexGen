@@ -54,7 +54,7 @@ export default function Services() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
             <div className="flex items-center gap-2 text-primary text-sm font-semibold mb-3">
-              <span className="opacity-60">//</span>
+              <span className="opacity-60">{'//'}</span>
               Our Services
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">

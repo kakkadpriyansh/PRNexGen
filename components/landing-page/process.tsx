@@ -35,7 +35,7 @@ export default function Process() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 text-primary text-sm font-semibold mb-3">
-            <span className="opacity-60">//</span>
+            <span className="opacity-60">{'//'}</span>
             Our Work Process
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">

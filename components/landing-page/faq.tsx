@@ -46,7 +46,7 @@ export default function Faq() {
             <span className="brand-gradient-text">Questions</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have questions? We've got answers. If you don't find what you're looking for, just reach out.
+            Have questions? We&apos;ve got answers. If you don&apos;t find what you&apos;re looking for, just reach out.
           </p>
         </div>
 

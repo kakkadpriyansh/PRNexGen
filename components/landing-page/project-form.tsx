@@ -176,7 +176,7 @@ export default function ProjectForm() {
               
               {success && (
                 <div className="mt-4 p-4 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-xl text-center">
-                  <p className="text-green-700 dark:text-green-300 font-semibold">✅ Submitted successfully! We'll contact you soon.</p>
+                  <p className="text-green-700 dark:text-green-300 font-semibold">✅ Submitted successfully! We&apos;ll contact you soon.</p>
                 </div>
               )}
             </div>
