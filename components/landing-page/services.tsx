@@ -49,8 +49,6 @@ export default function Services() {
   return (
     <section id="services" className="py-24 bg-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header row — left title + right button */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
             <div className="flex items-center gap-2 text-primary text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] sm:tracking-[0.25em] uppercase mb-3">
@@ -74,22 +72,18 @@ export default function Services() {
           </button>
         </div>
 
-        {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="svc-card group">
-              {/* Icon box */}
               <div className="svc-icon-box mb-5">
                 <Icon size={22} />
               </div>
-
               <h3 className="font-bold text-base mb-2 group-hover:text-primary transition-colors duration-200">
                 {title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">
                 {desc}
               </p>
-
               <button
                 onClick={() => scrollTo("#contact")}
                 className="flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-3 transition-all duration-200"

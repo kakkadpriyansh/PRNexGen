@@ -1,97 +1,122 @@
 "use client"
 
-import { ArrowRight, MoveRight } from "lucide-react"
+import { motion } from "framer-motion"
+import { ArrowRight, MoveRight, Sparkles } from "lucide-react"
 import Ticker from "./ticker"
+
+const floats = [
+  { label: "Web Dev",    emoji: "🌐", delay: 0,    pos: "top-[18%] right-[8%]" },
+  { label: "Mobile App", emoji: "📱", delay: 0.15, pos: "top-[52%] right-[2%]" },
+  { label: "AI / ML",   emoji: "🤖", delay: 0.3,  pos: "bottom-[22%] right-[14%]" },
+  { label: "UI/UX",     emoji: "🎨", delay: 0.45, pos: "top-[30%] left-[2%] hidden lg:flex" },
+]
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show:   { opacity: 1, y: 0 },
+}
 
 export default function Hero() {
   const scrollTo = (href: string) => {
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: "smooth" })
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <section id="home" className="hero-dark relative overflow-hidden min-h-screen flex items-center pt-16">
-      {/* Background glow blobs */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
+    <section
+      id="home"
+      className="relative overflow-hidden min-h-screen flex flex-col justify-center pt-16 bg-white"
+    >
+      {/* Gradient blobs */}
+      <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-gradient-to-bl from-primary/10 via-purple-100/40 to-transparent rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-primary/8 via-blue-50 to-transparent rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-purple-50/60 rounded-full blur-[80px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-10 pb-28 sm:py-16 lg:py-24">
-        <div className="flex items-center justify-between gap-6 text-[10px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.25em] uppercase text-white/55">
-          <div className="hidden sm:block">Rajkot, Gujarat</div>
-          <div className="text-center">Web • Mobile • AI • Cloud</div>
-          <div className="hidden sm:block">Worldwide</div>
-        </div>
+      {/* Floating service badges */}
+      {floats.map(({ label, emoji, delay, pos }) => (
+        <motion.div
+          key={label}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 + delay }}
+          className={`absolute ${pos} hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-white/80 backdrop-blur-md border border-white shadow-lg shadow-black/5 z-10`}
+          style={{ animation: `float ${3.5 + delay}s ease-in-out infinite`, animationDelay: `${delay}s` }}
+        >
+          <span className="text-lg leading-none">{emoji}</span>
+          <span className="text-xs font-bold text-gray-700 whitespace-nowrap">{label}</span>
+        </motion.div>
+      ))}
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-8">
-            <div className="inline-flex items-center gap-4 text-[10px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.25em] uppercase text-white/60">
-              <span className="h-px w-10 bg-primary/70" />
-              Design • Build • Scale
-            </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-28">
+        <div className="max-w-4xl mx-auto text-center">
 
-            <div className="mt-6 text-white/65 text-sm sm:text-base tracking-tight">
-              For startups, founders, and growing businesses
-            </div>
+          {/* Badge */}
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="show"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/8 border border-primary/15 text-primary text-sm font-semibold mb-8"
+          >
+            <Sparkles size={14} />
+            AI-Powered Digital Transformation
+          </motion.div>
 
-            <h1 className="mt-4 text-white font-extrabold tracking-tight leading-[0.98] sm:leading-[0.95] text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
-              Build Fast.
-              <br />
-              Scale Smart.
-              <br />
-              <span className="hero-accent-text">Deliver Results.</span>
-            </h1>
-          </div>
+          {/* Heading */}
+          <motion.h1
+            variants={fadeUp} initial="hidden" animate="show"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-gray-900 mb-6"
+          >
+            Build Fast.{" "}
+            <span className="brand-gradient-text">Scale Smart.</span>
+            <br />
+            Deliver Results.
+          </motion.h1>
 
-          <div className="lg:col-span-4">
-            <div className="max-w-md lg:ml-auto">
-              <p className="text-white/65 text-sm sm:text-base leading-relaxed max-w-[42ch]">
-                We design and develop high-performance web apps, AI solutions, and scalable systems that help startups and businesses grow faster.
-              </p>
+          {/* Subtitle */}
+          <motion.p
+            variants={fadeUp} initial="hidden" animate="show"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10"
+          >
+            PRNexGen is a next-generation software company delivering AI solutions, web &amp; mobile app development, and world-class UI/UX design for startups and enterprises worldwide.
+          </motion.p>
 
-              <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-                <button
-                  onClick={() => scrollTo("#contact")}
-                  className="hero-btn-primary justify-center w-full sm:w-auto"
-                >
-                  Start Your Project
-                  <ArrowRight size={17} />
-                </button>
+          {/* CTAs */}
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="show"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
+          >
+            <button
+              onClick={() => scrollTo("#contact")}
+              className="hero-btn-primary w-full sm:w-auto justify-center"
+            >
+              Start Your Project <ArrowRight size={17} />
+            </button>
+            <button
+              onClick={() => scrollTo("#projects")}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border-2 border-gray-200 text-gray-600 font-semibold text-sm hover:border-primary/40 hover:text-primary transition-all w-full sm:w-auto"
+            >
+              See Our Work <MoveRight size={17} />
+            </button>
+          </motion.div>
 
-                <button
-                  onClick={() => scrollTo("#projects")}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full border border-white/20 text-white/70 font-semibold text-sm hover:text-white hover:border-white/40 transition-all w-full sm:w-auto"
-                >
-                  See Our Work
-                  <MoveRight size={17} />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 sm:mt-16 flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-[10px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.25em] uppercase text-white/45">
-          <span>Performance First</span>
-          <span>•</span>
-          <span>Scalable Systems</span>
-          <span>•</span>
-          <span>Clean UX</span>
-          <span>•</span>
-          <span>Secure Architecture</span>
-        </div>
-
-        <div className="hidden lg:block absolute bottom-10 right-6">
-          <div className="rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 p-5 w-[240px]">
-            <div className="text-white font-extrabold text-lg leading-tight">
-              50+ Projects Delivered
-            </div>
-            <div className="mt-4 space-y-2 text-white/70 text-sm">
-              <div>10+ Industries</div>
-              <div>95% Client Satisfaction</div>
-            </div>
-          </div>
+          {/* Trust tags */}
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="show"
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold tracking-widest uppercase text-gray-400"
+          >
+            {["Performance First", "Scalable Systems", "Clean UX", "Secure Architecture"].map((t, i) => (
+              <span key={t} className="flex items-center gap-2">
+                {i > 0 && <span className="w-1 h-1 rounded-full bg-gray-300" />}
+                {t}
+              </span>
+            ))}
+          </motion.div>
         </div>
       </div>
 
+      {/* Ticker */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
         <Ticker />
       </div>
