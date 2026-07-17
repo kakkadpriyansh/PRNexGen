@@ -11,7 +11,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        /* Display & body — Plus Jakarta Sans (Google Sans Flex substitute) */
+        sans: ["var(--font-sans)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
+        /* Labels & technical metadata — JetBrains Mono */
+        mono: ["var(--font-mono)", "JetBrains Mono", "Menlo", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",

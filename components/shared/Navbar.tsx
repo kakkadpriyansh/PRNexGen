@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { HiMenu, HiX, HiChevronDown, HiMail } from "react-icons/hi"
 import { motion, AnimatePresence } from "framer-motion"
@@ -63,8 +64,27 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg btn-gradient flex items-center justify-center text-white font-black text-sm">P</div>
-              <span className="font-black text-xl tracking-tight gradient-text">PRNexGen</span>
+              <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 shadow-sm ring-1 ring-gray-100">
+                <Image
+                  src="/fevilogo.jpg"
+                  alt="PRNexGen Logo"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
+              <span
+                className="font-black text-xl tracking-tight"
+                style={{
+                  background: "linear-gradient(135deg, #111827 0%, #374151 60%, #9ca3af 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                PRNexGen
+              </span>
             </Link>
 
             {/* Desktop Nav */}
@@ -174,7 +194,28 @@ export default function Navbar() {
               className="fixed top-0 right-0 bottom-0 z-[101] w-80 bg-white shadow-2xl lg:hidden flex flex-col"
             >
               <div className="flex items-center justify-between p-5 border-b border-gray-100">
-                <span className="font-black text-xl gradient-text">PRNexGen</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl overflow-hidden flex-shrink-0 shadow-sm ring-1 ring-gray-100">
+                    <Image
+                      src="/fevilogo.jpg"
+                      alt="PRNexGen Logo"
+                      width={32}
+                      height={32}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span
+                    className="font-black text-xl"
+                    style={{
+                      background: "linear-gradient(135deg, #030712 0%, #1f2937 60%, #6b7280 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    PRNexGen
+                  </span>
+                </div>
                 <button onClick={() => setMobileOpen(false)} className="p-2 rounded-lg hover:bg-gray-100">
                   <HiX size={22} />
                 </button>

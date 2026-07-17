@@ -72,5 +72,5 @@
 }
 
 .custom-content code {
-  font-family: monospace;
+  font-family: var(--font-mono), 'JetBrains Mono', Menlo, monospace;
 }

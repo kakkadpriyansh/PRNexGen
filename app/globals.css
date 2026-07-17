@@ -37,7 +37,22 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+
+  /* ── Display headings ── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Labels, technical metadata, code — JetBrains Mono ── */
+  code, pre, kbd, samp,
+  .font-mono, [class*="font-mono"] {
+    font-family: var(--font-mono), 'JetBrains Mono', Menlo, monospace;
+    font-feature-settings: "calt" 1, "liga" 1;
   }
 
   @media (prefers-reduced-motion: reduce) {
