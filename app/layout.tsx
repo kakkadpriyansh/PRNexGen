@@ -4,7 +4,6 @@ import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import "@/components/landing-page/styles.css"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,13 +12,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "PRNexGen — Web Development, App Development, AI & Digital Marketing",
+  title: "PRNexGen — AI-Powered Software Development Company",
   description:
-    "PRNexGen is a premium IT agency offering website development, app development, hosting, AI-based product shoots, Meta Ads & SEO, and graphic designing. Build your digital future with us.",
+    "PRNexGen is a premium software development company specializing in AI solutions, web development, mobile app development, and UI/UX design. Build your digital future with us.",
   keywords: [
-    "web development", "app development", "website maintenance", "hosting services",
-    "AI product shoot", "Meta Ads", "SEO marketing", "graphic designing",
-    "IT agency", "digital agency", "PRNexGen", "Rajkot", "Gujarat",
+    "software development", "web development", "app development", "AI solutions",
+    "UI/UX design", "education app", "digital transformation", "PRNexGen", "Rajkot", "Gujarat",
   ],
   authors: [{ name: "PRNexGen" }],
   creator: "PRNexGen",
@@ -28,14 +26,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://prnexgen.com",
-    title: "PRNexGen — Premium IT Agency",
-    description: "We build digital experiences that grow your business.",
+    title: "PRNexGen — AI-Powered Software Development",
+    description: "We build intelligent digital products that transform businesses.",
     siteName: "PRNexGen",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PRNexGen — Premium IT Agency",
-    description: "We build digital experiences that grow your business.",
+    title: "PRNexGen — AI-Powered Software Development",
+    description: "We build intelligent digital products that transform businesses.",
   },
   icons: {
     icon: [{ url: "/fevilogo.jpg", type: "image/jpeg" }],
@@ -47,19 +45,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('prnexgen-theme')||'light';document.documentElement.classList.add(t)}catch(e){}`,
-          }}
-        />
-      </head>
+    <html lang="en">
       <body className={`${inter.className} ${inter.variable}`}>
-        <ThemeProvider>
-          {children}
-          <Analytics />
-        </ThemeProvider>
+        {children}
+        <Analytics />
       </body>
     </html>
   )
