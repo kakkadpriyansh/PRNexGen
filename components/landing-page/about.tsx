@@ -65,7 +65,7 @@ export default function About() {
           {/* Right — Content */}
           <div className="space-y-6">
             <div className="flex items-center gap-2 text-primary text-sm font-semibold">
-              <span className="opacity-60">//</span>
+              <span className="opacity-60">{"//"}</span>
               About Us
             </div>
 
@@ -77,7 +77,7 @@ export default function About() {
             </h2>
 
             <p className="text-muted-foreground leading-relaxed">
-              We're a passionate team of developers, designers, and digital strategists based in Rajkot, Gujarat. We partner with startups and businesses to build scalable, beautiful digital products that deliver real results.
+              We&apos;re a passionate team of developers, designers, and digital strategists based in Rajkot, Gujarat. We partner with startups and businesses to build scalable, beautiful digital products that deliver real results.
             </p>
 
             {/* Stats row */}

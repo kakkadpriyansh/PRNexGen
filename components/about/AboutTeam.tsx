@@ -12,7 +12,7 @@ export default function AboutTeam() {
     <section className="py-20 bg-[#f9f8ff]">
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-12">
-          <div className="text-primary text-sm font-semibold mb-3">// Our Team</div>
+          <div className="text-primary text-sm font-semibold mb-3">{"//"} Our Team</div>
           <h2 className="text-3xl md:text-4xl font-extrabold">The People Behind PRNexGen</h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

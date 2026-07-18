@@ -12,7 +12,7 @@ export default function AboutTimeline() {
     <section className="py-20 bg-white">
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-12">
-          <div className="text-primary text-sm font-semibold mb-3">// Our Journey</div>
+          <div className="text-primary text-sm font-semibold mb-3">{"//"} Our Journey</div>
           <h2 className="text-3xl md:text-4xl font-extrabold">How We Got Here</h2>
         </div>
         <div className="relative border-l-2 border-[#e0e7ff] pl-8 space-y-10">
