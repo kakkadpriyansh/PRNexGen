@@ -1,10 +1,13 @@
 "use client"
 
 const team = [
-  { name: "Parth Rangani", role: "Founder & Full-Stack Developer", initials: "PR" },
-  { name: "Neel Patel", role: "UI/UX Designer", initials: "NP" },
-  { name: "Raj Shah", role: "Mobile App Developer", initials: "RS" },
-  { name: "Krisha Mehta", role: "AI & Automation Engineer", initials: "KM" },
+  { name: "KAKKAD PRIYANSH", role: "CEO & FOUNDER", initials: "KP" },
+  { name: "RAJ AJMERA", role: "DIRECTOR & FOUNDER", initials: "RA" },
+  { name: "NEEL VAGHASIYA", role: "CTO", initials: "NV" },
+  { name: "DHRUVIL SOLANI", role: "FULL STACK DEVELOPER", initials: "DS" },
+  { name: "VIVEK ADESARA", role: "GAME & UNITY DEVELOPER", initials: "VA" },
+  { name: "PRIYANK SAVALIYA", role: "REACT DEV.", initials: "PS" },
+  { name: "JEET RANPARA", role: "EMBEDDED DEV.", initials: "JR" },
 ]
 
 export default function AboutTeam() {
