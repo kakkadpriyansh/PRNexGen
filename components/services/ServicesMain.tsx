@@ -43,7 +43,7 @@ const services = [
     icon: FiLayout,
     title: "UI/UX Design",
     desc: "Pixel-perfect, user-centered design systems that convert visitors into loyal customers.",
-    href: "/services/ui-ux-development",
+    href: "/services/ui-ux-design",
     gradient: "from-indigo-500 to-indigo-600",
     bg: "bg-indigo-50",
     border: "border-indigo-100",

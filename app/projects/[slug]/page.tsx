@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import Navbar from "@/components/shared/Navbar"
 import Footer from "@/components/shared/Footer"
 import { projects } from "@/components/projects/projects-data"
+import JsonLd from "@/components/shared/JsonLd"
 
 /* ── Detail sections ── */
 import DetailHero        from "@/components/projects/detail/DetailHero"
@@ -43,7 +44,7 @@ export async function generateMetadata(
       type: "article",
       title: `${project.name} — PRNexGen Case Study`,
       description: project.shortDesc,
-      url: `https://prnexgen.com/projects/${project.id}`,
+      url: `https://prnexgen.in/projects/${project.id}`,
       siteName: "PRNexGen",
       images: project.image.startsWith("/") ? [{ url: project.image }] : [],
     },
@@ -61,8 +62,24 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
   const project = projects.find((p) => p.id === params.slug)
   if (!project) notFound()
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${project.name} — Case Study`,
+    description: project.longDesc,
+    image: project.image.startsWith("/") ? `https://prnexgen.in${project.image}` : project.image,
+    url: `https://prnexgen.in/projects/${project.id}`,
+    author: { "@type": "Organization", name: "PRNexGen", url: "https://prnexgen.in" },
+    publisher: {
+      "@type": "Organization",
+      name: "PRNexGen",
+      logo: { "@type": "ImageObject", url: "https://prnexgen.in/fevilogo.jpg" },
+    },
+  }
+
   return (
     <>
+      <JsonLd schema={articleSchema} />
       <Navbar />
       <main>
         <DetailHero        project={project} />

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Our Projects — PRNexGen",
     description:
       "Explore our portfolio of innovative digital solutions delivered for businesses across various industries.",
-    url: "https://prnexgen.com/projects",
+    url: "https://prnexgen.in/projects",
     siteName: "PRNexGen",
   },
   twitter: {

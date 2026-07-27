@@ -66,6 +66,7 @@ export default function AppDevContent() {
         badge="App Development"
         title="Mobile Apps That"
         highlight="Users Love"
+        definition="Mobile app development is the process of creating software applications that run on smartphones and tablets — covering ideation, UI/UX design, native or cross-platform coding, testing, and App Store deployment."
         description="We build high-performance iOS and Android apps using React Native and Flutter — delivering native experiences from a single, maintainable codebase."
         icon={<FiSmartphone size={80} />}
         gradient="from-purple-500 to-purple-700"

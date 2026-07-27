@@ -109,6 +109,7 @@ export default function DigitalMarketingContent() {
         badge="Digital Marketing"
         title="Grow Faster with"
         highlight="Data-Driven Marketing"
+        definition="Digital marketing is the practice of promoting products and services through online channels — including search engine optimisation (SEO), paid advertising (Meta Ads, Google Ads), social media, email marketing, and content strategy."
         description="We design and execute digital marketing strategies that generate real leads, drive brand visibility, and deliver measurable ROI across SEO, paid ads, social media, and more."
         icon={<FiTrendingUp size={80} />}
         gradient="from-rose-500 to-rose-700"

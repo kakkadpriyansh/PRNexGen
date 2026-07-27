@@ -11,7 +11,7 @@ const WORDS = ["Web Solutions", "Mobile Apps", "AI Systems", "ERP Software", "UI
 export default function HomeHero() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
   const [wordIdx, setWordIdx] = useState(0)
-  const [displayed, setDisplayed] = useState("")
+  const [displayed, setDisplayed] = useState(WORDS[0])
   const [typing, setTyping] = useState(true)
   const sectionRef = useRef<HTMLElement>(null)
 

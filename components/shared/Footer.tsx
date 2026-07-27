@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi"
-import { FaLinkedin, FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa"
+import { FaLinkedin, FaInstagram, FaTwitter, FaFacebook, FaWhatsapp } from "react-icons/fa"
 
 const services = [
   { label: "Web Development",       href: "/services/web-development" },
@@ -17,10 +17,11 @@ const company = [
 ]
 
 const socials = [
-  { icon: FaLinkedin,  href: "#", label: "LinkedIn",  color: "hover:text-blue-600" },
-  { icon: FaInstagram, href: "#", label: "Instagram", color: "hover:text-pink-500" },
-  { icon: FaTwitter,   href: "#", label: "Twitter",   color: "hover:text-sky-500" },
-  { icon: FaFacebook,  href: "#", label: "Facebook",  color: "hover:text-blue-700" },
+  { icon: FaLinkedin,  href: "https://www.linkedin.com/company/prnexgen", label: "LinkedIn",  color: "hover:text-blue-500" },
+  { icon: FaInstagram, href: "https://www.instagram.com/prnexgen",         label: "Instagram", color: "hover:text-pink-500" },
+  { icon: FaTwitter,   href: "https://twitter.com/prnexgen",               label: "Twitter",   color: "hover:text-sky-400" },
+  { icon: FaFacebook,  href: "https://www.facebook.com/prnexgen",          label: "Facebook",  color: "hover:text-blue-600" },
+  { icon: FaWhatsapp,  href: "https://wa.me/918401661887",                 label: "WhatsApp",  color: "hover:text-green-400" },
 ]
 
 export default function Footer() {
@@ -41,6 +42,8 @@ export default function Footer() {
             <div className="flex gap-3">
               {socials.map(({ icon: Icon, href, label, color }) => (
                 <a key={label} href={href} aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-gray-400 ${color} transition-all hover:bg-white/20`}>
                   <Icon size={16} />
                 </a>

@@ -109,6 +109,7 @@ export default function ERPContent() {
         badge="ERP Software Development"
         title="Custom ERP Solutions"
         highlight="Built for Scale"
+        definition="ERP software development is the process of building integrated enterprise systems that unify core business functions — including inventory, HR, payroll, finance, procurement, and CRM — into a single, centralised platform."
         description="We build end-to-end Enterprise Resource Planning systems that unify your operations — from inventory and HR to finance and CRM — into a single, powerful platform."
         icon={<FiServer size={80} />}
         gradient="from-violet-500 to-violet-700"

@@ -1,27 +1,17 @@
+import { redirect } from "next/navigation"
 import type { Metadata } from "next"
-import Navbar from "@/components/shared/Navbar"
-import Footer from "@/components/shared/Footer"
-import UIUXContent from "@/components/services/UIUXContent"
 
+/* Belt-and-suspenders: noindex in case crawlers somehow bypass the redirect */
 export const metadata: Metadata = {
-  title: "UI/UX Development — PRNexGen",
-  description:
-    "Professional UI/UX design and development services — wireframing, prototyping, design systems, and pixel-perfect interfaces using Figma and modern tooling.",
-  keywords: [
-    "UI UX design", "UI UX development", "Figma design", "product design India",
-    "web design services", "mobile app design", "PRNexGen UI UX",
-  ],
-  alternates: { canonical: "/services/ui-ux-development" },
+  robots: { index: false, follow: false },
 }
 
-export default function UIUXDevelopmentPage() {
-  return (
-    <>
-      <Navbar />
-      <main>
-        <UIUXContent />
-      </main>
-      <Footer />
-    </>
-  )
+/**
+ * /services/ui-ux-development is a legacy duplicate of /services/ui-ux-design.
+ * All internal links and the footer already point to /services/ui-ux-design.
+ * This permanent redirect preserves any external links or search-engine
+ * index entries and consolidates ranking signals into the canonical URL.
+ */
+export default function UIUXDevelopmentRedirect() {
+  redirect("/services/ui-ux-design")
 }

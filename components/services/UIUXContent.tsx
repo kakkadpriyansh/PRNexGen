@@ -66,6 +66,7 @@ export default function UIUXContent() {
         badge="UI/UX Design"
         title="Design That"
         highlight="Converts & Delights"
+        definition="UI/UX design is the discipline of creating intuitive, visually compelling user interfaces and seamless user experiences — spanning research, wireframing, prototyping, design systems, and usability testing."
         description="We create pixel-perfect, user-centered interfaces backed by research — design systems, prototypes, and brand identities that make your product stand out."
         icon={<FiLayout size={80} />}
         gradient="from-indigo-500 to-indigo-700"

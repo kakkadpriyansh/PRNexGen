@@ -67,6 +67,7 @@ export default function WebDevContent() {
         title="Build Powerful"
         highlight="Web Applications"
         titleSuffix="That Scale"
+        definition="Web development is the process of designing, building, and maintaining websites and web applications — encompassing everything from front-end interfaces to back-end logic, databases, and APIs."
         description="We craft high-performance, SEO-optimized web applications using Next.js, React, and modern cloud infrastructure — built to grow with your business."
         icon={<FiCode size={80} />}
         gradient="from-blue-500 to-blue-700"

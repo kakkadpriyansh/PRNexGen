@@ -10,12 +10,14 @@ interface ServiceHeroProps {
   title: string
   highlight: string
   titleSuffix?: string
+  /** A concise "X is the process of..." sentence placed directly below the H1 for AEO/SEO clarity. */
+  definition?: string
   description: string
   icon: ReactNode
   gradient: string
 }
 
-export default function ServiceHero({ badge, title, highlight, titleSuffix, description, icon, gradient }: ServiceHeroProps) {
+export default function ServiceHero({ badge, title, highlight, titleSuffix, definition, description, icon, gradient }: ServiceHeroProps) {
   return (
     <section className="relative pt-28 pb-20 overflow-hidden bg-white">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[100px] -translate-y-1/3 translate-x-1/3 pointer-events-none" />
@@ -31,11 +33,16 @@ export default function ServiceHero({ badge, title, highlight, titleSuffix, desc
             <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold mb-5 border border-blue-100">
               {badge}
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-gray-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-gray-900 mb-4">
               {title}{" "}
               <span className="gradient-text">{highlight}</span>
               {titleSuffix && <><br />{titleSuffix}</>}
             </h1>
+            {definition && (
+              <p className="text-base text-gray-600 leading-relaxed mb-3 font-medium max-w-lg border-l-2 border-blue-300 pl-4">
+                {definition}
+              </p>
+            )}
             <p className="text-lg text-gray-500 leading-relaxed mb-8 max-w-lg">{description}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="btn-gradient px-7 py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2">

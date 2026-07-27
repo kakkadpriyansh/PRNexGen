@@ -66,6 +66,7 @@ export default function EduAppContent() {
         badge="Education App Development"
         title="E-Learning Platforms"
         highlight="Built to Inspire"
+        definition="Education app development is the process of building mobile or web platforms for online learning, course delivery, and student engagement — including LMS systems, video streaming, gamification, and assessments."
         description="We build scalable LMS platforms, education apps, and interactive learning tools that engage students and empower educators."
         icon={<FiBookOpen size={80} />}
         gradient="from-cyan-500 to-cyan-700"
