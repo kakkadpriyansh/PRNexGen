@@ -22,6 +22,7 @@ const navLinks = [
   { label: "Services", href: "/services", dropdown: services },
   { label: "Projects", href: "/projects" },
   { label: "Career",   href: "/career" },
+  { label: "Blog",     href: "/blog" },
   { label: "Contact",  href: "/contact" },
 ]
 

@@ -13,6 +13,7 @@ const company = [
   { label: "About Us",  href: "/about" },
   { label: "Projects",  href: "/projects" },
   { label: "Career",    href: "/career" },
+  { label: "Blog",      href: "/blog" },
   { label: "Contact",   href: "/contact" },
 ]
 
