@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }
     
     const body = await request.json()
-    const { name, email, phone, service, message } = body
+    const { name, email, phone, company, service, budget, message } = body
     
     // Validate required fields
     if (!name || !email || !message) {
@@ -37,7 +37,9 @@ export async function POST(request: Request) {
       name,
       email,
       phone: phone || 'Not provided',
+      company: company || 'Not provided',
       service: service || 'Not specified',
+      budget: budget || 'Not specified',
       messageLength: message?.length || 0
     })
 
@@ -108,10 +110,24 @@ export async function POST(request: Request) {
               </div>
               ` : ''}
               
+              ${company ? `
+              <div class="field">
+                <div class="label">🏢 Company Name:</div>
+                <div class="value">${company}</div>
+              </div>
+              ` : ''}
+              
               ${service ? `
               <div class="field">
                 <div class="label">🛠️ Service Needed:</div>
                 <div class="value">${service}</div>
+              </div>
+              ` : ''}
+              
+              ${budget ? `
+              <div class="field">
+                <div class="label">💰 Project Budget:</div>
+                <div class="value">${budget}</div>
               </div>
               ` : ''}
               
