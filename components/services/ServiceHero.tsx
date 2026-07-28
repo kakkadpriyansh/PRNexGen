@@ -48,7 +48,7 @@ export default function ServiceHero({ badge, title, highlight, titleSuffix, defi
               <Link href="/contact" className="btn-gradient px-7 py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2">
                 Start Your Project <HiArrowRight />
               </Link>
-              <Link href="/portfolio" className="px-7 py-3.5 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:border-blue-300 hover:text-blue-600 transition-all flex items-center justify-center">
+              <Link href="/projects" className="px-7 py-3.5 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:border-blue-300 hover:text-blue-600 transition-all flex items-center justify-center">
                 View Our Work
               </Link>
             </div>

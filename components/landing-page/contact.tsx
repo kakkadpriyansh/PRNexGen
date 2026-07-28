@@ -37,16 +37,16 @@ export default function Contact() {
     const errs = validate(form)
     if (Object.keys(errs).length) { setErrors(errs); return }
     setLoading(true)
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      
+
       const data = await response.json()
-      
+
       if (response.ok && data.success) {
         setSuccess(true)
         setForm({ name: "", email: "", phone: "", service: "", message: "" })
@@ -90,7 +90,7 @@ export default function Contact() {
             <div className="space-y-5">
               {[
                 { icon: Mail, label: "Email", value: "prnexgen@yahoo.com", href: "mailto:prnexgen@yahoo.com" },
-                { icon: Phone, label: "Phone", value: "8401661887 | 99799 93097", href: "tel:+918401661887" },
+                { icon: Phone, label: "Phone", value: "9979993097 | 99799 93097", href: "tel:+919979993097" },
                 { icon: MapPin, label: "Location", value: "Rajkot, Gujarat, India", href: null },
               ].map(({ icon: Icon, label, value, href }) => (
                 <div key={value} className="flex items-start gap-4">

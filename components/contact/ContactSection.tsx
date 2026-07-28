@@ -29,8 +29,8 @@ const contactInfo = [
   {
     icon: HiPhone,
     label: "Phone Number",
-    value: "+91 84016 61887",
-    href: "tel:+918401661887",
+    value: "+91 99799 93097",
+    href: "tel:+919979993097",
     color: "from-cyan-500 to-cyan-600",
   },
   {
@@ -43,11 +43,11 @@ const contactInfo = [
 ]
 
 const socials = [
-  { icon: FaLinkedin,  href: "https://www.linkedin.com/company/prnexgen", label: "LinkedIn",  color: "hover:bg-blue-600" },
-  { icon: FaInstagram, href: "https://www.instagram.com/prnexgen",        label: "Instagram", color: "hover:bg-pink-500" },
-  { icon: FaTwitter,   href: "https://twitter.com/prnexgen",              label: "Twitter",   color: "hover:bg-sky-500" },
-  { icon: FaFacebook,  href: "https://www.facebook.com/prnexgen",         label: "Facebook",  color: "hover:bg-blue-700" },
-  { icon: FaWhatsapp,  href: "https://wa.me/918401661887",                label: "WhatsApp",  color: "hover:bg-green-500" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/company/prnexgen", label: "LinkedIn", color: "hover:bg-blue-600" },
+  { icon: FaInstagram, href: "https://www.instagram.com/prnexgen", label: "Instagram", color: "hover:bg-pink-500" },
+  { icon: FaTwitter, href: "https://twitter.com/prnexgen", label: "Twitter", color: "hover:bg-sky-500" },
+  { icon: FaFacebook, href: "https://www.facebook.com/prnexgen", label: "Facebook", color: "hover:bg-blue-700" },
+  { icon: FaWhatsapp, href: "https://wa.me/919979993097", label: "WhatsApp", color: "hover:bg-green-500" },
 ]
 
 const services = [

@@ -3,26 +3,26 @@ import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi"
 import { FaLinkedin, FaInstagram, FaTwitter, FaFacebook, FaWhatsapp } from "react-icons/fa"
 
 const services = [
-  { label: "Web Development",       href: "/services/web-development" },
-  { label: "App Development",       href: "/services/app-development" },
-  { label: "Education App Dev",     href: "/services/education-app-development" },
-  { label: "UI/UX Design",          href: "/services/ui-ux-design" },
+  { label: "Web Development", href: "/services/web-development" },
+  { label: "App Development", href: "/services/app-development" },
+  { label: "Education App Dev", href: "/services/education-app-development" },
+  { label: "UI/UX Design", href: "/services/ui-ux-design" },
 ]
 
 const company = [
-  { label: "About Us",  href: "/about" },
-  { label: "Projects",  href: "/projects" },
-  { label: "Career",    href: "/career" },
-  { label: "Blog",      href: "/blog" },
-  { label: "Contact",   href: "/contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Career", href: "/career" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ]
 
 const socials = [
-  { icon: FaLinkedin,  href: "https://www.linkedin.com/company/prnexgen", label: "LinkedIn",  color: "hover:text-blue-500" },
-  { icon: FaInstagram, href: "https://www.instagram.com/prnexgen",         label: "Instagram", color: "hover:text-pink-500" },
-  { icon: FaTwitter,   href: "https://twitter.com/prnexgen",               label: "Twitter",   color: "hover:text-sky-400" },
-  { icon: FaFacebook,  href: "https://www.facebook.com/prnexgen",          label: "Facebook",  color: "hover:text-blue-600" },
-  { icon: FaWhatsapp,  href: "https://wa.me/918401661887",                 label: "WhatsApp",  color: "hover:text-green-400" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/company/prnexgen", label: "LinkedIn", color: "hover:text-blue-500" },
+  { icon: FaInstagram, href: "https://www.instagram.com/prnexgen", label: "Instagram", color: "hover:text-pink-500" },
+  { icon: FaTwitter, href: "https://twitter.com/prnexgen", label: "Twitter", color: "hover:text-sky-400" },
+  { icon: FaFacebook, href: "https://www.facebook.com/prnexgen", label: "Facebook", color: "hover:text-blue-600" },
+  { icon: FaWhatsapp, href: "https://wa.me/919979993097", label: "WhatsApp", color: "hover:text-green-400" },
 ]
 
 export default function Footer() {
@@ -91,9 +91,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+918401661887" className="flex items-start gap-3 text-gray-400 hover:text-blue-400 transition-colors">
+                <a href="tel:+919979993097" className="flex items-start gap-3 text-gray-400 hover:text-blue-400 transition-colors">
                   <HiPhone className="mt-0.5 shrink-0 text-blue-500" size={16} />
-                  <span className="text-sm">+91 84016 61887</span>
+                  <span className="text-sm">+91 99799 93097</span>
                 </a>
               </li>
               <li>

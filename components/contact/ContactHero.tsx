@@ -5,10 +5,10 @@ import { HiArrowRight } from "react-icons/hi"
 import { FiMessageCircle, FiZap, FiShield, FiGlobe } from "react-icons/fi"
 
 const floatingBadges = [
-  { icon: FiMessageCircle, label: "24/7 Support",     color: "bg-blue-500",   pos: "top-10 left-4 sm:left-8",     delay: 0 },
-  { icon: FiZap,           label: "Fast Response",    color: "bg-purple-500", pos: "top-10 right-4 sm:right-8",   delay: 0.2 },
-  { icon: FiShield,        label: "Free Consultation",color: "bg-cyan-500",   pos: "bottom-20 left-4 sm:left-8",  delay: 0.4 },
-  { icon: FiGlobe,         label: "Global Clients",   color: "bg-indigo-500", pos: "bottom-20 right-4 sm:right-8",delay: 0.6 },
+  { icon: FiMessageCircle, label: "24/7 Support", color: "bg-blue-500", pos: "top-10 left-4 sm:left-8", delay: 0 },
+  { icon: FiZap, label: "Fast Response", color: "bg-purple-500", pos: "top-10 right-4 sm:right-8", delay: 0.2 },
+  { icon: FiShield, label: "Free Consultation", color: "bg-cyan-500", pos: "bottom-20 left-4 sm:left-8", delay: 0.4 },
+  { icon: FiGlobe, label: "Global Clients", color: "bg-indigo-500", pos: "bottom-20 right-4 sm:right-8", delay: 0.6 },
 ]
 
 export default function ContactHero() {
@@ -79,7 +79,7 @@ export default function ContactHero() {
                 Send a Message <HiArrowRight />
               </button>
               <a
-                href="tel:+918401661887"
+                href="tel:+919979993097"
                 className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold text-base hover:border-blue-300 hover:text-blue-600 transition-all"
               >
                 Call Us Now

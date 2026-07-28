@@ -82,7 +82,7 @@ PRNexGen's site is well-built at the page level — clean design, a genuinely st
 |---|---|---|
 | Author / team information | About page names four team members (Parth Rangani – Founder & Full-Stack Developer, Neel Patel, Raj Shah, Krisha Mehta) with clear roles, but no individual bios, years of experience, credentials, or LinkedIn profile links for any of them. | 🟠 Needs Attention |
 | About page depth | Mission, vision, values, and a 2022–2025 company timeline are all present and specific to PRNexGen rather than generic filler. | 🟢 Good |
-| Contact information / NAP | Full Name-Address-Phone data present on the Contact page (Rajkot, Gujarat, India; +91 84016 61887; prnexgen@yahoo.com), plus a live Google Maps embed and stated business hours. | 🟢 Good |
+| Contact information / NAP | Full Name-Address-Phone data present on the Contact page (Rajkot, Gujarat, India; +91 99799 93097; prnexgen@yahoo.com), plus a live Google Maps embed and stated business hours. | 🟢 Good |
 | Trust signals | Six testimonials appear across the homepage/services with named individuals and companies (TechCorp India, EduLearn USA, NexaFlow UAE, SmartApps Mumbai, CloudBase UK, DataSync Bangalore), but none link to a verifiable source (LinkedIn, company site) — reducing how much weight an AI engine would put on them versus the fully-attributed case-study testimonials. | 🟠 Needs Attention |
 | Organization / entity clarity | Brand name, logo, and URL are consistent throughout. Social profile links exist for LinkedIn, Instagram, Twitter/X, Facebook, and WhatsApp — but see the Technical GEO finding below. | 🟢 Good |
 

@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       addressRegion: "Gujarat",
       addressCountry: "IN",
     },
-    telephone: "+918401661887",
+    telephone: "+919979993097",
     email: "prnexgen@yahoo.com",
     sameAs: [
       "https://www.linkedin.com/company/prnexgen",

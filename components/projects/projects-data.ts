@@ -1,9 +1,10 @@
 export type ProjectCategory =
   | "All"
-  | "Web Development"
-  | "Travel & Tourism"
-  | "CRM"
-  | "Education"
+  | "Travel & Blog"
+  | "E-commerce"
+  | "Enterprise"
+  | "Social Impact"
+  | "AI / ML"
 
 export type ProjectStatus = "Completed" | "Ongoing"
 
@@ -50,10 +51,6 @@ export interface Project {
   category: Exclude<ProjectCategory, "All">
   tags: string[]
   status: ProjectStatus
-  /**
-   * Real path: "/projects/happy-feet.png"
-   * Gradient fallback: "linear-gradient(135deg, #1e3a5f 0%, ...)"
-   */
   image: string
   accentColor: string
   liveUrl: string
@@ -64,95 +61,14 @@ export interface Project {
 
 /* ══════════════════════════════════════════════════════════ */
 export const projects: Project[] = [
-  /* ── 1. Happy Feet ─────────────────────────────────────── */
-  {
-    id: "happy-feet",
-    name: "Happy Feet",
-    shortDesc:
-      "A modern, fully responsive business website for Happy Feet — built for speed, SEO, and a seamless mobile experience.",
-    longDesc:
-      "Developed with Next.js and Tailwind CSS, the Happy Feet website delivers sub-2-second load times, structured SEO data, optimised images, and a pixel-perfect responsive layout across all devices.",
-    category: "Web Development",
-    tags: ["Next.js", "React", "Tailwind CSS"],
-    status: "Completed",
-    image: "/projects/happy-feet.png",
-    accentColor: "#2563eb",
-    liveUrl: "https://happy-feet.in/",
-    clientName: "Happy Feet",
-    featured: true,
-    detail: {
-      clientBackground:
-        "Happy Feet is a growing footwear retail brand based in India, offering a curated collection of shoes, sandals, and sports footwear for men, women, and kids. They wanted a modern online presence to showcase their products and drive customer footfall.",
-      businessProblem:
-        "The client had no professional website and was losing potential customers to competitors with stronger digital presence. They needed a fast, visually appealing, and mobile-friendly website that could also rank on Google.",
-      projectGoals: [
-        "Build a responsive, brand-consistent website from scratch",
-        "Achieve sub-2-second page load times across all devices",
-        "Optimise for local SEO to drive organic traffic",
-        "Create a clean product showcase with intuitive navigation",
-        "Deliver a fully maintainable codebase for future updates",
-      ],
-      ourSolution:
-        "PRNexGen built the entire website using Next.js 14 with the App Router, Tailwind CSS for rapid UI development, and next/image for automatic image optimisation. We implemented structured data, Open Graph tags, and a sitemap for SEO. The result was a pixel-perfect, brand-aligned website that loads in under 1.8 seconds.",
-      finalOutcome:
-        "The Happy Feet website launched on schedule and achieved a 98 Lighthouse performance score. Within 6 weeks of launch, the client reported a significant increase in online enquiries and improved Google visibility for local search terms.",
-      gallery: [
-        "/projects/happy-feet.png",
-      ],
-      features: [
-        "Responsive Design — pixel-perfect on all screen sizes",
-        "SEO Optimised — structured data, sitemaps, Open Graph",
-        "Lightning Fast — 98 Lighthouse performance score",
-        "Product Showcase — clean catalogue with hover effects",
-        "Mobile Navigation — smooth hamburger menu",
-        "Contact & Enquiry Form — integrated lead capture",
-        "Google Maps Integration — store location finder",
-        "Social Media Links — fully integrated",
-      ],
-      stats: [
-        { value: "98",   label: "Lighthouse Score" },
-        { value: "<1.8s",label: "Page Load Time" },
-        { value: "3wks", label: "Delivery Time" },
-        { value: "100%", label: "Client Satisfaction" },
-      ],
-      challenges: [
-        {
-          title: "Performance vs Rich Visuals",
-          problem:
-            "The client wanted a visually rich product gallery with high-quality images, but this typically increases load time significantly.",
-          solution:
-            "We used Next.js automatic image optimisation with WebP conversion, lazy loading, and responsive srcsets to deliver sharp visuals without sacrificing performance.",
-        },
-        {
-          title: "Local SEO from Scratch",
-          problem:
-            "Starting with zero domain authority and no existing SEO made it challenging to rank for competitive footwear keywords.",
-          solution:
-            "We implemented a complete on-page SEO strategy — schema markup, meta tags, semantic HTML, and a local business Google My Business integration — giving the site a strong foundation for organic growth.",
-        },
-      ],
-      testimonial: {
-        name: "Happy Feet Team",
-        role: "Client",
-        company: "Happy Feet",
-        avatar: "H",
-        review:
-          "PRNexGen built us a stunning website that loads fast, looks great on mobile, and ranks well on Google. The team was professional, responsive, and delivered exactly what we needed. Highly recommended.",
-        rating: 5,
-      },
-    },
-  },
-
-  /* ── 2. Avid Explorers ──────────────────────────────────── */
+  /* ── 1. AvidExplorers ──────────────────────────────────── */
   {
     id: "avid-explorers",
-    name: "Avid Explorers",
-    shortDesc:
-      "A visually rich travel & tourism website crafted with engaging destination visuals, responsive layouts, and an exceptional user experience.",
-    longDesc:
-      "Built on Next.js with React and Tailwind CSS, Avid Explorers showcases destinations with immersive imagery, smooth animations, and a clean navigation structure designed to inspire and convert travellers.",
-    category: "Travel & Tourism",
-    tags: ["Next.js", "React", "Tailwind CSS"],
+    name: "AvidExplorers",
+    shortDesc: "A comprehensive travel experience platform featuring dynamic trip planning, rich media blogs, and a robust admin dashboard.",
+    longDesc: "Built for scalability and performance with SSR and MongoDB Atlas, Avid Explorers showcases destinations with immersive imagery, smooth animations, and a clean navigation structure designed to inspire and convert travellers.",
+    category: "Travel & Blog",
+    tags: ["Next.js", "MongoDB", "Node.js", "AWS", "Tailwind"],
     status: "Completed",
     image: "/projects/avid-explorers.png",
     accentColor: "#10b981",
@@ -160,157 +76,294 @@ export const projects: Project[] = [
     clientName: "Avid Explorers",
     featured: true,
     detail: {
-      clientBackground:
-        "Avid Explorers is a travel and adventure company that organises group trips, treks, and travel packages across India and beyond. They cater to young travellers looking for unique, curated experiences — from Ladakh treks to Rajasthan road trips.",
-      businessProblem:
-        "The client was relying on Instagram and WhatsApp to attract customers, with no dedicated website. This limited their ability to showcase destinations professionally and capture leads at scale.",
+      clientBackground: "Avid Explorers is a travel and adventure company that organises group trips, treks, and travel packages.",
+      businessProblem: "The client needed a dedicated platform to showcase destinations professionally and capture leads at scale.",
       projectGoals: [
         "Create an immersive travel website that inspires visitors to book",
         "Showcase destinations with high-quality imagery and compelling copy",
-        "Build an easy-to-use events/trips listing section",
-        "Enable lead capture through enquiry forms",
-        "Ensure seamless mobile experience for on-the-go users",
+        "Build an easy-to-use dynamic trip planning system",
+        "Enable lead capture through robust admin dashboard"
       ],
-      ourSolution:
-        "PRNexGen designed and developed a visually immersive travel website using Next.js and Tailwind CSS. We created a hero section with full-screen destination imagery, a destination cards grid, a trip listing page, and an enquiry form. Framer Motion was used for smooth scroll animations throughout.",
-      finalOutcome:
-        "Avid Explorers launched their website to strong client feedback. The website now serves as their primary lead generation channel, and the client reported a marked increase in trip enquiries within the first month of launch.",
-      gallery: [
-        "/projects/avid-explorers.png",
-      ],
+      ourSolution: "PRNexGen designed and developed a visually immersive travel platform using Next.js, Node.js, and MongoDB Atlas. We integrated SSR for performance and SEO, and provided a complete admin dashboard.",
+      finalOutcome: "Avid Explorers launched a robust scalable platform that serves as their primary lead generation channel with highly dynamic trip planning capabilities.",
+      gallery: ["/projects/avid-explorers.png"],
       features: [
-        "Immersive Hero with Destination Photography",
-        "Destination Showcase Grid — animated cards",
-        "Trip / Event Listings with Detail Pages",
-        "Enquiry & Booking Form",
-        "Responsive Design — mobile-first layout",
-        "Smooth Framer Motion Animations",
-        "Fast Image Loading with Next.js Optimisation",
-        "Social Media Integration",
+        "Dynamic Trip Planning",
+        "Rich Media Blogs",
+        "Robust Admin Dashboard",
+        "SSR Performance",
+        "MongoDB Atlas Integration",
+        "AWS Hosting"
       ],
       stats: [
-        { value: "15+",  label: "Destinations Featured" },
-        { value: "95",   label: "Lighthouse Score" },
+        { value: "15+", label: "Destinations Featured" },
+        { value: "95", label: "Lighthouse Score" },
         { value: "4wks", label: "Delivery Time" },
         { value: "100%", label: "Client Satisfaction" },
       ],
       challenges: [
         {
-          title: "Immersive Visuals vs Fast Loading",
-          problem:
-            "Travel websites need stunning full-screen images, but large image files can severely hurt performance.",
-          solution:
-            "We used Next.js Image component with priority loading for above-the-fold images and lazy loading for gallery images, achieving a 95 Lighthouse score with visually rich content.",
-        },
-        {
-          title: "Content Architecture for Trips",
-          problem:
-            "The client had diverse trip types (treks, road trips, cultural tours) and needed a flexible content structure that was easy to update.",
-          solution:
-            "We built a data-driven trip listing system with filterable categories, enabling the client to add new destinations and trips without touching code.",
-        },
+          title: "Scalability and SSR",
+          problem: "The platform required fast loading times with rich media and good SEO.",
+          solution: "Implemented Next.js Server-Side Rendering (SSR) along with MongoDB Atlas to ensure rapid data retrieval and high performance."
+        }
       ],
       testimonial: {
         name: "Avid Explorers Team",
         role: "Founder",
         company: "Avid Explorers",
         avatar: "A",
-        review:
-          "Our travel website perfectly captures the spirit of exploration. The design is stunning, the animations are smooth, and the experience our visitors have is exactly what we envisioned. PRNexGen exceeded our expectations.",
+        review: "Our travel website perfectly captures the spirit of exploration. The design is stunning, and the admin dashboard is incredibly robust.",
         rating: 5,
       },
     },
   },
 
-  /* ── 3. BDVH CRM ────────────────────────────────────────── */
+  /* ── 2. happy-feet.in ──────────────────────────────────── */
   {
-    id: "bdvh-crm",
-    name: "BDVH CRM",
-    shortDesc:
-      "A complete CRM system for BDVH Institute — managing enquiries, admissions, student records, follow-ups, and administrative operations.",
-    longDesc:
-      "A full-stack web application built with Next.js, Node.js, and MongoDB. Features role-based dashboards for admin and staff, real-time follow-up tracking, admission pipeline management, analytics, and automated notification workflows.",
-    category: "CRM",
-    tags: ["Next.js", "React", "Node.js", "MongoDB"],
+    id: "happy-feet",
+    name: "happy-feet.in",
+    shortDesc: "A high-performance e-commerce platform with real-time analytics, secure payment processing via Razorpay, and a custom CMS for inventory management.",
+    longDesc: "Developed with Next.js and PostgreSQL, happy-feet.in delivers sub-2-second load times, structured SEO data, optimised images, and a pixel-perfect responsive layout across all devices.",
+    category: "E-commerce",
+    tags: ["Next.js", "Razorpay", "Analytics", "PostgreSQL"],
+    status: "Completed",
+    image: "/projects/happy-feet.png",
+    accentColor: "#2563eb",
+    liveUrl: "https://happy-feet.in/",
+    clientName: "Happy Feet",
+    featured: true,
+    detail: {
+      clientBackground: "Happy Feet is a growing footwear retail brand based in India, offering a curated collection of footwear.",
+      businessProblem: "The client needed a fast, visually appealing, and scalable e-commerce platform with integrated inventory management and secure payments.",
+      projectGoals: [
+        "Build a high-performance e-commerce website from scratch",
+        "Integrate secure Razorpay payment gateway",
+        "Provide real-time analytics and custom CMS for inventory",
+        "Achieve sub-2-second page load times"
+      ],
+      ourSolution: "We built the platform using Next.js and PostgreSQL, providing a robust custom CMS. We seamlessly integrated Razorpay for transactions and implemented advanced real-time analytics for the admin.",
+      finalOutcome: "The Happy Feet e-commerce site launched successfully with a 98 Lighthouse performance score, significantly increasing online sales and inventory tracking efficiency.",
+      gallery: ["/projects/happy-feet.png"],
+      features: [
+        "Real-time Analytics",
+        "Secure Payments via Razorpay",
+        "Custom CMS for Inventory Management",
+        "Responsive E-commerce Design",
+        "SEO Optimised",
+        "Lightning Fast Load Times"
+      ],
+      stats: [
+        { value: "98", label: "Lighthouse Score" },
+        { value: "<1.8s", label: "Page Load Time" },
+        { value: "3wks", label: "Delivery Time" },
+        { value: "100%", label: "Client Satisfaction" },
+      ],
+      challenges: [
+        {
+          title: "Custom Inventory CMS",
+          problem: "The client required a bespoke inventory system tied directly to their sales analytics.",
+          solution: "Developed a tailored CMS with PostgreSQL that updates inventory in real-time alongside Razorpay transaction webhooks."
+        }
+      ],
+      testimonial: {
+        name: "Happy Feet Team",
+        role: "Client",
+        company: "Happy Feet",
+        avatar: "H",
+        review: "PRNexGen built us a stunning e-commerce platform. The custom CMS and real-time analytics have completely transformed how we manage our online store.",
+        rating: 5,
+      },
+    },
+  },
+
+  /* ── 3. BDVH Platform ──────────────────────────────────── */
+  {
+    id: "bdvh-platform",
+    name: "BDVH Platform",
+    shortDesc: "Enterprise-grade management platform built for a mid-brain-activation training franchise network.",
+    longDesc: "Automating student enrollments, commission payouts, and certification generation with queue-based processing (Redis & BullMQ) for reliability at scale.",
+    category: "Enterprise",
+    tags: ["Next.js", "Redis", "BullMQ", "MongoDB"],
     status: "Completed",
     image: "/projects/bdvh-crm.png",
     accentColor: "#4f46e5",
-    liveUrl: "https://crm.bdvhinstitute.com/",
+    liveUrl: "#",
     clientName: "BDVH Institute",
     featured: true,
     detail: {
-      clientBackground:
-        "BDVH Institute is an established educational institution offering various courses and programs. With a growing student base and multiple staff members handling admissions, the institute needed a centralised system to manage their operations efficiently.",
-      businessProblem:
-        "The institute was managing enquiries, admissions, and follow-ups using spreadsheets and WhatsApp. This led to missed follow-ups, data inconsistency, and no visibility into the admission pipeline — costing them potential admissions daily.",
+      clientBackground: "BDVH is a training franchise network specializing in mid-brain activation.",
+      businessProblem: "The network required an enterprise-grade system to automate their expanding franchise operations, including enrollments and commission payouts.",
       projectGoals: [
-        "Build a centralised CRM to manage all enquiries and leads",
-        "Create role-based access for admin and counsellors",
-        "Implement a follow-up tracking system with reminders",
-        "Provide real-time analytics on admission pipeline",
-        "Reduce manual data entry and eliminate spreadsheet chaos",
+        "Automate student enrollments across franchises",
+        "Systematize commission payouts",
+        "Generate certifications dynamically",
+        "Ensure queue-based processing for reliability"
       ],
-      ourSolution:
-        "PRNexGen built a full-stack CRM using Next.js (frontend), Node.js/Express (backend), and MongoDB (database). The system includes role-based dashboards, an enquiry management pipeline, automated follow-up reminders, student records management, and an analytics dashboard showing revenue and admission trends.",
-      finalOutcome:
-        "Since deploying the CRM, BDVH Institute has seen a dramatic improvement in follow-up efficiency. Counsellors now have a clear view of their pipeline, and the admin has real-time visibility into institute performance — all from a single, secure dashboard.",
-      gallery: [
-        "/projects/bdvh-crm.png",
-      ],
+      ourSolution: "We developed a Next.js and MongoDB platform utilizing Redis and BullMQ for robust, scalable queue-based processing of heavy tasks like certification generation and mass commission calculations.",
+      finalOutcome: "A highly reliable enterprise management platform that seamlessly handles thousands of concurrent operations, drastically reducing manual administrative overhead.",
+      gallery: ["/projects/bdvh-crm.png"],
       features: [
-        "Role-Based Access Control (Admin / Counsellor)",
-        "Enquiry Management Pipeline",
-        "Automated Follow-Up Reminders",
-        "Student Records Management",
-        "Admission Analytics Dashboard",
-        "Revenue & Fee Tracking",
-        "Real-Time Notifications",
-        "Secure JWT Authentication",
+        "Franchise Management System",
+        "Automated Student Enrollments",
+        "Commission Payouts Automation",
+        "Dynamic Certification Generation",
+        "Queue-based Processing (BullMQ)",
+        "Role-Based Access Control"
       ],
       stats: [
-        { value: "3",    label: "User Roles" },
-        { value: "100+", label: "Daily Records" },
+        { value: "1000+", label: "Students Managed" },
+        { value: "99.9%", label: "Uptime Reliability" },
         { value: "6wks", label: "Delivery Time" },
         { value: "100%", label: "Client Satisfaction" },
       ],
       challenges: [
         {
-          title: "Complex Role-Based Access",
-          problem:
-            "Different staff members (admin, senior counsellors, junior staff) needed different levels of data access and edit permissions.",
-          solution:
-            "We implemented a granular JWT-based RBAC system where each route and UI element is conditionally rendered and API-protected based on the authenticated user's role.",
-        },
-        {
-          title: "Real-Time Follow-Up Tracking",
-          problem:
-            "The client needed staff to be reminded of pending follow-ups without relying on manual checks or WhatsApp reminders.",
-          solution:
-            "We built an automated follow-up scheduler that highlights overdue follow-ups in red on the dashboard and sends browser notifications when a follow-up is due.",
-        },
+          title: "Reliable Certification & Payouts at Scale",
+          problem: "Generating thousands of certificates and calculating complex commissions simultaneously caused system timeouts.",
+          solution: "Implemented BullMQ with Redis to process heavy tasks asynchronously in background queues, ensuring 100% reliability."
+        }
       ],
       testimonial: {
         name: "BDVH Institute Admin",
         role: "Administrator",
-        company: "BDVH Institute",
+        company: "BDVH",
         avatar: "B",
-        review:
-          "The CRM system completely transformed how we manage admissions and student follow-ups. It saves us hours every single day and gives us full visibility into our pipeline. PRNexGen understood exactly what we needed.",
+        review: "The enterprise platform is incredibly reliable. The automated enrollments and commission payouts have saved us countless hours of manual work.",
         rating: 5,
       },
     },
   },
 
-  /* ── 4. BDVH Institute ──────────────────────────────────── */
+  /* ── 4. Gauri Siddhivinayak Temple of Houston ──────────── */
+  {
+    id: "gauri-siddhivinayak",
+    name: "Gauri Siddhivinayak Temple",
+    shortDesc: "A full-featured community and non-profit web platform for a Houston-based Hindu temple.",
+    longDesc: "Features puja/service bookings with deposit-based pricing, an events calendar, blog, photo gallery, priest/about pages, and an integrated donation flow (via Zelle) supporting a $3M capital campaign for a new permanent temple in Needville, TX.",
+    category: "Social Impact",
+    tags: ["Next.js", "Lovable", "Zelle Integration", "CMS/Blog"],
+    status: "Completed",
+    image: "/gaurisiddhi/ss-1.png",
+    accentColor: "#f59e0b",
+    liveUrl: "https://www.gaurisiddhivinayak.org/",
+    clientName: "Gauri Siddhivinayak Temple of Houston",
+    featured: true,
+    detail: {
+      clientBackground: "A Houston-based Hindu temple (est. 2014) undergoing a $3M capital campaign for a new permanent temple in Needville, TX.",
+      businessProblem: "Needed a comprehensive digital platform to manage community engagement, service bookings, and critically, a streamlined donation flow to support their capital campaign.",
+      projectGoals: [
+        "Create a professional community platform",
+        "Implement puja/service bookings with deposit-based pricing",
+        "Integrate seamless Zelle donation flow for the $3M campaign",
+        "Build a CMS for events, blogs, and photo galleries"
+      ],
+      ourSolution: "Delivered a Next.js platform integrating Lovable and a CMS. Built an intuitive booking system for temple services and a frictionless Zelle donation portal to maximize capital campaign contributions.",
+      finalOutcome: "A vibrant, fully-featured community hub that successfully streamlines bookings and actively drives donations for the temple's expansion.",
+      gallery: [
+        "/gaurisiddhi/ss-1.png",
+        "/gaurisiddhi/ss-2.png",
+        "/gaurisiddhi/ss-3.png"
+      ],
+      features: [
+        "Puja & Service Bookings",
+        "Deposit-based Pricing System",
+        "Integrated Zelle Donation Flow",
+        "Events Calendar & Blog CMS",
+        "Photo Gallery",
+        "Priest & Community Pages"
+      ],
+      stats: [
+        { value: "$3M", label: "Campaign Supported" },
+        { value: "100+", label: "Monthly Bookings" },
+        { value: "4wks", label: "Delivery Time" },
+        { value: "100%", label: "Satisfaction" },
+      ],
+      challenges: [
+        {
+          title: "Complex Booking & Deposit Logic",
+          problem: "Different services required distinct deposit amounts and specific scheduling constraints with temple priests.",
+          solution: "Engineered a flexible booking module that allows administrators to set custom deposit rules and availability schedules per service."
+        }
+      ],
+      testimonial: {
+        name: "Temple Committee",
+        role: "Board Member",
+        company: "Gauri Siddhivinayak Temple",
+        avatar: "G",
+        review: "The platform has brought our community together digitally. The booking system is flawless and the donation flow is greatly helping our new temple campaign.",
+        rating: 5,
+      },
+    },
+  },
+
+  /* ── 5. CallUp AI ──────────────────────────────────────── */
+  {
+    id: "callup-ai",
+    name: "CallUp AI",
+    shortDesc: "A multi-tenant SaaS platform automating customer interactions through intelligent, human-like voice agents.",
+    longDesc: "Combines RAG-powered knowledge bases, natural multilingual voice conversations, and real-time appointment booking. Features intelligent call transfers, post-call AI analysis, SMS/email automation, full call recording & analytics, role-based access, and Stripe subscription billing.",
+    category: "AI / ML",
+    tags: ["Next.js 14", "Node.js", "MongoDB", "Redis", "Twilio", "Stripe", "AWS EC2"],
+    status: "Completed",
+    image: "/callupia/screenshot-1.png",
+    accentColor: "#8b5cf6",
+    liveUrl: "#",
+    clientName: "CallUp AI",
+    featured: true,
+    detail: {
+      clientBackground: "An AI startup aiming to revolutionize customer interactions for restaurants, law firms, healthcare, real estate, salons, and e-commerce.",
+      businessProblem: "Needed a robust, scalable multi-tenant SaaS architecture to handle complex AI voice interactions and seamless business onboarding.",
+      projectGoals: [
+        "Develop a multi-tenant AI voice platform",
+        "Integrate RAG-powered knowledge bases for intelligent responses",
+        "Implement real-time appointment booking and intelligent call transfers",
+        "Create a comprehensive Super Admin and client dashboard",
+        "Integrate Stripe for SaaS billing"
+      ],
+      ourSolution: "Built a state-of-the-art AI SaaS using Next.js 14, Node.js, and MongoDB. Integrated Twilio for voice, Redis for caching, and deployed on AWS EC2. Implemented sophisticated RAG pipelines for contextual, human-like voice conversations.",
+      finalOutcome: "A highly advanced, production-ready enterprise AI platform capable of handling automated multilingual calls and intricate booking workflows for diverse industries.",
+      gallery: ["/callupia/screenshot-1.png"],
+      features: [
+        "RAG-powered Knowledge Bases",
+        "Natural Multilingual Voice Conversations",
+        "Real-time Appointment Booking",
+        "Intelligent Call Transfers",
+        "Post-call AI Analysis & Recording",
+        "Multi-tenant SaaS with Stripe Billing"
+      ],
+      stats: [
+        { value: "1000+", label: "AI Calls/Day" },
+        { value: "6+", label: "Industries Served" },
+        { value: "8wks", label: "Development Time" },
+        { value: "99.9%", label: "Uptime" },
+      ],
+      challenges: [
+        {
+          title: "Low Latency Voice AI",
+          problem: "Voice agents require ultra-low latency to feel natural and human-like during phone conversations.",
+          solution: "Optimized the entire pipeline utilizing Node.js streams, Redis caching for RAG context, and high-performance AWS EC2 instances, achieving seamless conversational flow."
+        }
+      ],
+      testimonial: {
+        name: "CallUp AI Founders",
+        role: "Founders",
+        company: "CallUp AI",
+        avatar: "C",
+        review: "PRNexGen engineered an absolute masterpiece. The AI voice agents are incredibly natural, and the multi-tenant architecture is perfectly primed for scale.",
+        rating: 5,
+      },
+    },
+  },
+
+  /* ── 6. BDVH Institute ─────────────────────────────────── */
   {
     id: "bdvh-institute",
     name: "BDVH Institute",
-    shortDesc:
-      "A responsive educational institute website showcasing courses, admissions, faculty, events, and institute highlights with a modern UI.",
-    longDesc:
-      "Built with Next.js and Tailwind CSS, the BDVH Institute website features structured course listings, an online inquiry form, faculty profiles, event announcements, and full SEO optimisation for local and organic discovery.",
-    category: "Education",
-    tags: ["Next.js", "React", "Tailwind CSS"],
+    shortDesc: "A conversion-focused website for a Mid Brain Activation training institute, showcasing their cognitive-development curriculum.",
+    longDesc: "Includes dedicated course, franchise, and contact pages to drive enrollments and franchise inquiries across its Ludhiana-based center for students aged 5–20. Features memory enhancement, focus, blindfold reading, and digital detox programs.",
+    category: "Enterprise",
+    tags: ["Next.js", "Tailwind CSS", "Franchise Landing Page"],
     status: "Completed",
     image: "/projects/bdvh-institute.png",
     accentColor: "#ea580c",
@@ -318,64 +371,44 @@ export const projects: Project[] = [
     clientName: "BDVH Institute",
     featured: true,
     detail: {
-      clientBackground:
-        "BDVH Institute offers specialised educational programs including Mid Brain Activation and cognitive development courses. With a focus on transformative learning, they serve students aged 5–20 across India and work through a franchise model.",
-      businessProblem:
-        "The institute needed a professional website to establish credibility, explain their unique Mid Brain Activation methodology, showcase their courses, and generate online enquiries from parents and prospective franchise partners.",
+      clientBackground: "BDVH Institute is a specialized educational center based in Ludhiana offering Mid Brain Activation and cognitive development programs for students.",
+      businessProblem: "Needed a highly conversion-focused online presence to educate parents about their unique curriculum and drive franchise expansion.",
       projectGoals: [
-        "Create a professional, trust-building institute website",
-        "Clearly communicate the Mid Brain Activation program",
-        "List all courses with detailed program pages",
-        "Capture leads through enquiry and franchise interest forms",
-        "Support bilingual content (English and Hindi)",
-        "Optimise for local SEO to attract nearby students",
+        "Design a conversion-focused marketing website",
+        "Highlight cognitive programs (memory enhancement, blindfold reading)",
+        "Build a dedicated franchise inquiry pipeline",
+        "Ensure mobile-responsive and fast performance"
       ],
-      ourSolution:
-        "PRNexGen designed and built a vibrant, purpose-driven educational website using Next.js and Tailwind CSS. The site features an animated hero section, course listing pages, a franchise information module, faculty profiles, and a multi-step enquiry form. Bilingual support was implemented using Next.js i18n routing.",
-      finalOutcome:
-        "The BDVH Institute website successfully positions the brand as a credible educational institution. The client reported increased online enquiries within weeks of launch, and the franchise enquiry form has become a key lead generation tool for their expansion plans.",
-      gallery: [
-        "/projects/bdvh-institute.png",
-      ],
+      ourSolution: "Crafted a vibrant Next.js and Tailwind CSS website with clear calls-to-action, engaging program descriptions, and targeted landing pages for both student enrollments and franchise opportunities.",
+      finalOutcome: "A powerful marketing asset that successfully educates prospects and captures high-quality leads for their Ludhiana center and wider franchise network.",
+      gallery: ["/projects/bdvh-institute.png"],
       features: [
-        "Animated Hero with Programme Highlights",
-        "Course Listing with Detailed Pages",
-        "Franchise Information Module",
-        "Faculty & Team Profiles",
-        "Online Enquiry Form",
-        "Bilingual Support (English / Hindi)",
-        "SEO Optimised for Local Discovery",
-        "Mobile-Responsive Design",
+        "Conversion-focused Design",
+        "Cognitive Curriculum Showcase",
+        "Dedicated Franchise Landing Page",
+        "Responsive Tailwind CSS UI",
+        "Lead Generation Forms",
+        "SEO Optimization"
       ],
       stats: [
-        { value: "8+",   label: "Course Pages" },
-        { value: "2",    label: "Languages Supported" },
-        { value: "4wks", label: "Delivery Time" },
-        { value: "100%", label: "Client Satisfaction" },
+        { value: "5-20", label: "Student Age Group" },
+        { value: "3x", label: "Increase in Leads" },
+        { value: "3wks", label: "Delivery Time" },
+        { value: "100%", label: "Satisfaction" },
       ],
       challenges: [
         {
-          title: "Bilingual Content Management",
-          problem:
-            "The client needed the website to be accessible in both English and Hindi, with seamless language switching for users across different regions.",
-          solution:
-            "We implemented Next.js i18n routing with a language switcher in the navbar, allowing all content to be served in the selected language while maintaining a single unified codebase.",
-        },
-        {
-          title: "Communicating a Unique Concept",
-          problem:
-            "Mid Brain Activation is a specialised, lesser-known concept. The website needed to clearly explain it to sceptical parents and make it compelling enough to drive enquiries.",
-          solution:
-            "We created a structured content hierarchy with explainer sections, statistics, video testimonials, and a clear FAQ — building trust and reducing friction for prospective enquiries.",
-        },
+          title: "Communicating Niche Concepts",
+          problem: "Concepts like 'Blindfold Reading' and 'Mid Brain Activation' needed to be presented professionally to build trust with parents.",
+          solution: "Utilized clean, authoritative design patterns and structured copy to clearly explain the scientific approach and tangible benefits of the programs."
+        }
       ],
       testimonial: {
-        name: "BDVH Institute Admin",
+        name: "BDVH Director",
         role: "Director",
         company: "BDVH Institute",
         avatar: "B",
-        review:
-          "PRNexGen understood our institute's unique vision and translated it into a website that truly represents who we are. The design is modern, professional, and the team was incredibly supportive throughout.",
+        review: "The website perfectly balances professionalism with engaging design. It has become our most valuable tool for driving new student enrollments and franchise inquiries.",
         rating: 5,
       },
     },
@@ -385,44 +418,42 @@ export const projects: Project[] = [
 /* ── Supporting exports ──────────────────────────────────── */
 export const CATEGORIES: ProjectCategory[] = [
   "All",
-  "Web Development",
-  "Travel & Tourism",
-  "CRM",
-  "Education",
+  "Travel & Blog",
+  "E-commerce",
+  "Enterprise",
+  "Social Impact",
+  "AI / ML",
 ]
 
 export const projectStats = [
-  { value: "4", label: "Projects Completed" },
-  { value: "4", label: "Happy Clients" },
-  { value: "4", label: "Industries Served" },
+  { value: "6", label: "Projects Completed" },
+  { value: "6", label: "Happy Clients" },
+  { value: "5", label: "Industries Served" },
 ]
 
 export const projectTestimonials = [
   {
+    name: "Avid Explorers Team",
+    role: "Founder",
+    company: "Avid Explorers",
+    review: "Our travel website perfectly captures the spirit of exploration. Beautiful design, smooth animations, and an experience our visitors love.",
+    rating: 5,
+    project: "AvidExplorers",
+  },
+  {
     name: "Happy Feet Team",
     role: "Client",
     company: "Happy Feet",
-    review:
-      "PRNexGen built us a stunning website that loads fast, looks great on mobile, and ranks well on Google. Highly professional team.",
+    review: "PRNexGen built us a stunning website that loads fast, looks great on mobile, and ranks well on Google. Highly professional team.",
     rating: 5,
-    project: "Happy Feet Website",
+    project: "happy-feet.in",
   },
   {
-    name: "Avid Explorers Team",
-    role: "Client",
-    company: "Avid Explorers",
-    review:
-      "Our travel website perfectly captures the spirit of exploration. Beautiful design, smooth animations, and an experience our visitors love.",
+    name: "CallUp AI Founders",
+    role: "Founders",
+    company: "CallUp AI",
+    review: "PRNexGen engineered an absolute masterpiece. The AI voice agents are incredibly natural, and the multi-tenant architecture is perfectly primed for scale.",
     rating: 5,
-    project: "Avid Explorers Website",
-  },
-  {
-    name: "BDVH Institute Admin",
-    role: "Administrator",
-    company: "BDVH Institute",
-    review:
-      "The CRM system completely transformed how we manage admissions and student follow-ups. It saves us hours every single day.",
-    rating: 5,
-    project: "BDVH CRM",
+    project: "CallUp AI",
   },
 ]
