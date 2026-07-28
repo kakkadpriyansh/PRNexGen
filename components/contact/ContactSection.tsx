@@ -76,8 +76,8 @@ const inputCls =
 const labelCls = "block text-sm font-semibold text-gray-700 mb-1.5"
 
 /* ── SelectField ───────────────────────────────────────────────── */
-function SelectField({ label, options, required = false, placeholder }: {
-  label: string; options: string[]; required?: boolean; placeholder: string
+function SelectField({ label, options, required = false, placeholder, name }: {
+  label: string; options: string[]; required?: boolean; placeholder: string; name: string
 }) {
   return (
     <div>
@@ -86,9 +86,9 @@ function SelectField({ label, options, required = false, placeholder }: {
         {!required && <span className="text-gray-400 font-normal"> (Optional)</span>}
       </label>
       <div className="relative">
-        <select required={required} defaultValue="" className={`${inputCls} appearance-none pr-10`}>
+        <select required={required} defaultValue="" name={name} className={`${inputCls} appearance-none pr-10`}>
           <option value="" disabled>{placeholder}</option>
-          {options.map((o) => <option key={o}>{o}</option>)}
+          {options.map((o) => <option key={o} value={o}>{o}</option>)}
         </select>
         <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={16} />
       </div>
@@ -101,10 +101,40 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSubmitting(true)
-    setTimeout(() => { setSubmitting(false); setSubmitted(true) }, 1800)
+    
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      company: formData.get("company"),
+      service: formData.get("service"),
+      budget: formData.get("budget"),
+      message: formData.get("message")
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      
+      const result = await response.json()
+      if (result.success) {
+        setSubmitted(true)
+      } else {
+        alert("Failed to send message: " + (result.message || "Unknown error"))
+      }
+    } catch (error) {
+      console.error(error)
+      alert("An error occurred while sending your message.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -164,11 +194,11 @@ export default function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className={labelCls}>Full Name <span className="text-red-500">*</span></label>
-                      <input required type="text" placeholder="Rahul Sharma" className={inputCls} />
+                      <input required name="name" type="text" placeholder="Rahul Sharma" className={inputCls} />
                     </div>
                     <div>
                       <label className={labelCls}>Email Address <span className="text-red-500">*</span></label>
-                      <input required type="email" placeholder="rahul@company.com" className={inputCls} />
+                      <input required name="email" type="email" placeholder="rahul@company.com" className={inputCls} />
                     </div>
                   </div>
 
@@ -176,11 +206,11 @@ export default function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className={labelCls}>Phone Number <span className="text-red-500">*</span></label>
-                      <input required type="tel" placeholder="+91 98765 43210" className={inputCls} />
+                      <input required name="phone" type="tel" placeholder="+91 98765 43210" className={inputCls} />
                     </div>
                     <div>
                       <label className={labelCls}>Company Name <span className="text-gray-400 font-normal">(Optional)</span></label>
-                      <input type="text" placeholder="Your Company" className={inputCls} />
+                      <input type="text" name="company" placeholder="Your Company" className={inputCls} />
                     </div>
                   </div>
 
@@ -188,12 +218,14 @@ export default function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <SelectField
                       label="Service Required"
+                      name="service"
                       options={services}
                       required
                       placeholder="Select a service"
                     />
                     <SelectField
                       label="Project Budget"
+                      name="budget"
                       options={budgets}
                       placeholder="Select budget range"
                     />
@@ -204,6 +236,7 @@ export default function ContactSection() {
                     <label className={labelCls}>Message <span className="text-red-500">*</span></label>
                     <textarea
                       required
+                      name="message"
                       rows={5}
                       placeholder="Tell us about your project — goals, timeline, tech stack preferences, or anything you'd like us to know…"
                       className={`${inputCls} resize-none`}
