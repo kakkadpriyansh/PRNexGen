@@ -413,6 +413,189 @@ export const projects: Project[] = [
       },
     },
   },
+
+  /* ── 7. Zeovus ─────────────────────────────────────────── */
+  {
+    id: "zeovus",
+    name: "Zeovus",
+    shortDesc: "A multinational corporate portal showcasing global wellness, food, lifestyle, and consumer goods divisions.",
+    longDesc: "Engineered for international corporate presence, Zeovus connects global footprints across the UK, India, Europe, Middle East, and Asia. Features interactive global mapping, multi-business showcases, investor relations, and sustainability standards.",
+    category: "Enterprise",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "MySQL", "Global Architecture"],
+    status: "Completed",
+    image: "/projects/zeovus/hero.jpg",
+    accentColor: "#0284c7",
+    liveUrl: "https://zeovus.com",
+    clientName: "Zeovus Group",
+    featured: true,
+    detail: {
+      clientBackground: "Zeovus is a global wellness and consumer goods corporation with multinational operations across food, personal care, and lifestyle products.",
+      businessProblem: "Required an authoritative international portal to establish brand trust, display disparate business verticals, and capture cross-border B2B partnership opportunities.",
+      projectGoals: [
+        "Design a sophisticated corporate presence aligned with international branding",
+        "Showcase diversified business verticals under one unified architectural structure",
+        "Deliver multilingual & high-performance global infrastructure",
+        "Integrate dynamic quality assurance certifications and career portals"
+      ],
+      ourSolution: "Developed a modern Next.js and Tailwind CSS portal featuring interactive visual geography, robust dynamic content modules, responsive typography, and top-tier SEO architecture.",
+      finalOutcome: "A world-class digital flagship representing the Zeovus conglomerate, enhancing brand perception across overseas partners and corporate stakeholders.",
+      gallery: [
+        "/projects/zeovus/hero.jpg",
+        "/projects/zeovus/quality-assurance.png",
+      ],
+      features: [
+        "Global Corporate Division Showcase",
+        "Interactive International Footprint",
+        "Enterprise Quality Assurance Standards",
+        "Dynamic News & Media Center",
+        "B2B Partnership Inquiries",
+        "Ultra-Fast Global Edge Performance"
+      ],
+      stats: [
+        { value: "5+", label: "Global Regions" },
+        { value: "99+", label: "Lighthouse Performance" },
+        { value: "4wks", label: "Delivery Time" },
+        { value: "100%", label: "Client Satisfaction" },
+      ],
+      challenges: [
+        {
+          title: "Multi-Vertical Brand Harmonization",
+          problem: "Displaying distinct divisions (food, cosmetics, lifestyle) without muddying the master group identity.",
+          solution: "Implemented modular brand design systems with dedicated division sections and cohesive navigation flows."
+        }
+      ],
+      testimonial: {
+        name: "Zeovus Leadership",
+        role: "Corporate Management",
+        company: "Zeovus Group",
+        avatar: "Z",
+        review: "PRNexGen delivered a platform that truly matches our international aspirations. The visual hierarchy, performance, and attention to detail are exceptional.",
+        rating: 5,
+      },
+    },
+  },
+
+  /* ── 8. Zeovus Life ────────────────────────────────────── */
+  {
+    id: "zeovus-life",
+    name: "Zeovus Life",
+    shortDesc: "A modern B2B manufacturing and formulation platform with a catalog of 260+ nutraceutical and cosmetic products.",
+    longDesc: "Built for contract manufacturing and B2B formulations, Zeovus Life delivers interactive product exploration across 14 nutraceutical categories and 4 cosmetic lines, complete with detailed ingredient profiles, packaging types, and sample inquiry workflows.",
+    category: "Enterprise",
+    tags: ["Next.js 14", "Tailwind CSS", "TypeScript", "B2B Catalog", "CMS"],
+    status: "Completed",
+    image: "/projects/zeovus-life/hero.png",
+    accentColor: "#15A859",
+    liveUrl: "#",
+    clientName: "Zeovus Life",
+    featured: true,
+    detail: {
+      clientBackground: "Zeovus Life is a premier B2B manufacturer specializing in high-efficacy nutraceutical supplements and premium cosmetic formulations.",
+      businessProblem: "Needed an organized, searchable digital catalog to demonstrate extensive manufacturing capabilities and generate B2B formulation inquiries.",
+      projectGoals: [
+        "Architect a catalog organizing 260+ complex SKUs across diverse dosage forms",
+        "Highlight certifications (GMP, ISO, Halal) to instill trust with global distributors",
+        "Streamline contract manufacturing inquiry and custom formulation requests",
+        "Maintain visual synergy with the parent Zeovus brand guidelines"
+      ],
+      ourSolution: "Engineered a responsive Next.js 14 web platform structured into intuitive dosage categories (effervescent, capsules, gummies, creams) with instant search, category filtering, and direct quotation requests.",
+      finalOutcome: "A robust digital showroom enabling overseas buyers and brand owners to review manufacturing specs and initiate bulk orders rapidly.",
+      gallery: [
+        "/projects/zeovus-life/hero.png",
+        "/projects/zeovus-life/preview.png",
+      ],
+      features: [
+        "260+ SKU Formulation Directory",
+        "Nutraceutical & Cosmetic Categorization",
+        "Contract Manufacturing Process Flow",
+        "Regulatory Certification Display",
+        "Custom Formulation Request Generator",
+        "Clean Responsive B2B Architecture"
+      ],
+      stats: [
+        { value: "260+", label: "Products Cataloged" },
+        { value: "18", label: "Specialty Categories" },
+        { value: "3wks", label: "Delivery Time" },
+        { value: "100%", label: "Satisfaction" },
+      ],
+      challenges: [
+        {
+          title: "Complex High-Volume SKU Data Structuring",
+          problem: "Managing hundreds of pharmaceutical and cosmetic specifications without overwhelming site visitors.",
+          solution: "Structured category databases with granular filters by delivery format, benefit, and target demographic."
+        }
+      ],
+      testimonial: {
+        name: "Zeovus Life Operations",
+        role: "Production & Sales Lead",
+        company: "Zeovus Life",
+        avatar: "ZL",
+        review: "The new platform has streamlined our client discussions dramatically. Buyers can explore our exact formulas and capabilities in seconds.",
+        rating: 5,
+      },
+    },
+  },
+
+  /* ── 9. Jeel Mobile ────────────────────────────────────── */
+  {
+    id: "jeel-mobile",
+    name: "Jeel Mobile",
+    shortDesc: "A modern omnichannel retail storefront and direct WhatsApp lead engine for pre-owned smartphones and laptops.",
+    longDesc: "Engineered for conversion and trust, Jeel Mobile showcases certified pre-owned devices, clear condition grading, brand-specific filters, and direct WhatsApp negotiation flows that allow the seller to close deals seamlessly without cart friction.",
+    category: "E-commerce",
+    tags: ["React", "TypeScript", "Tailwind CSS", "WhatsApp Commerce", "Lucide Icons"],
+    status: "Completed",
+    image: "/projects/jeel-mobile/hero.png",
+    accentColor: "#059669",
+    liveUrl: "#",
+    clientName: "Jeel Mobile",
+    featured: true,
+    detail: {
+      clientBackground: "Jeel Mobile is a trusted regional tech retailer offering refurbished and certified pre-owned Apple, Samsung, and Android devices as well as premium laptops.",
+      businessProblem: "Needed an online showroom to display rapidly changing device inventory with transparent condition ratings while directing leads to WhatsApp for rapid closure.",
+      projectGoals: [
+        "Build a sleek, high-trust digital storefront optimized for mobile users",
+        "Implement device grading transparently (Mint, Good, Fair)",
+        "Create frictionless 1-click WhatsApp enquiry buttons with pre-filled device details",
+        "Include client wishlist and category filtering by brand and price"
+      ],
+      ourSolution: "Developed a modern, mobile-first web storefront featuring fast filtering, condition badges, instant product sharing, and deep-linked WhatsApp enquiry triggers.",
+      finalOutcome: "A high-conversion digital catalog that replaced manual messaging, resulting in higher sales volume and faster customer response cycles.",
+      gallery: [
+        "/projects/jeel-mobile/hero.png",
+        "/projects/jeel-mobile/logo.png",
+      ],
+      features: [
+        "Mobile-First Responsive Interface",
+        "1-Click WhatsApp Direct Inquiries",
+        "Multi-Tier Condition Grading Badges",
+        "Device Brand & Specification Filters",
+        "Local Wishlist & Sharing Support",
+        "Instant Customer Conversion Flow"
+      ],
+      stats: [
+        { value: "500+", label: "Devices Listed" },
+        { value: "4x", label: "Faster Inquiries" },
+        { value: "2wks", label: "Turnaround Time" },
+        { value: "100%", label: "Satisfaction" },
+      ],
+      challenges: [
+        {
+          title: "Eliminating E-commerce Friction for Second-Hand Tech",
+          problem: "Standard shopping carts deter buyers of second-hand electronics who demand direct negotiation and reassurance on device condition.",
+          solution: "Replaced conventional checkout with automated WhatsApp messaging containing exact device specs and condition ratings."
+        }
+      ],
+      testimonial: {
+        name: "Jeel Mobile Team",
+        role: "Store Manager",
+        company: "Jeel Mobile",
+        avatar: "JM",
+        review: "Customers love browsing our inventory on their phones and messaging us directly on WhatsApp. It made our entire selling process effortless.",
+        rating: 5,
+      },
+    },
+  },
 ]
 
 /* ── Supporting exports ──────────────────────────────────── */
@@ -426,8 +609,8 @@ export const CATEGORIES: ProjectCategory[] = [
 ]
 
 export const projectStats = [
-  { value: "6", label: "Projects Completed" },
-  { value: "6", label: "Happy Clients" },
+  { value: "9", label: "Projects Completed" },
+  { value: "9", label: "Happy Clients" },
   { value: "5", label: "Industries Served" },
 ]
 

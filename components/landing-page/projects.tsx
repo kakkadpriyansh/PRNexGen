@@ -87,6 +87,45 @@ const projects = [
     liveUrl: "https://bdvh.prnexgen.in/",
     features: ["Conversion-focused Design", "Course Pages", "Franchise Landing Page", "Contact Forms", "Responsive UI"],
   },
+  {
+    id: 7,
+    title: "Zeovus",
+    category: "Enterprise",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "MySQL"],
+    desc: "A global corporate portal for Zeovus Group, presenting multinational business divisions across food, lifestyle, wellness, and international trade operations.",
+    images: [
+      "/projects/zeovus/hero.jpg",
+      "/projects/zeovus/quality-assurance.png",
+    ],
+    liveUrl: "https://zeovus.com",
+    features: ["Global Business Showcase", "Multi-division Architecture", "International Presence Map", "Quality Assurance Standards", "B2B Lead Generation"],
+  },
+  {
+    id: 8,
+    title: "Zeovus Life",
+    category: "Enterprise",
+    tech: ["Next.js", "Tailwind CSS", "TypeScript"],
+    desc: "A modern B2B manufacturing and catalog platform for nutraceutical and cosmetic formulations, showcasing over 260+ SKUs with comprehensive product specifications.",
+    images: [
+      "/projects/zeovus-life/hero.png",
+      "/projects/zeovus-life/preview.png",
+    ],
+    liveUrl: "#",
+    features: ["Interactive Formulation Catalog", "260+ Nutraceutical & Cosmetic SKUs", "Contract Manufacturing Workflow", "Quality Certification Standards", "B2B Sample Inquiries"],
+  },
+  {
+    id: 9,
+    title: "Jeel Mobile",
+    category: "E-commerce",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Lucide Icons"],
+    desc: "A premium omnichannel retail catalog and lead engine for pre-owned smartphones and laptops, connecting buyers directly with sellers via instant WhatsApp negotiation.",
+    images: [
+      "/projects/jeel-mobile/hero.png",
+      "/projects/jeel-mobile/logo.png",
+    ],
+    liveUrl: "#",
+    features: ["Device Condition Grading", "Instant WhatsApp Direct Inquiries", "Multi-Brand Mobile & Laptop Catalog", "Smart Filter & Wishlist", "Fast Mobile-First UX"],
+  },
 ]
 
 type Project = typeof projects[0]
@@ -143,7 +182,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               <span className="section-pill text-xs mb-2 inline-flex">{project.category}</span>
               <h3 className="text-2xl font-bold">{project.title}</h3>
             </div>
-            {project.liveUrl && (
+            {project.liveUrl && project.liveUrl !== "#" && (
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -264,7 +303,7 @@ export default function Projects() {
                     >
                       View Details <ArrowRight size={15} />
                     </button>
-                    {project.liveUrl && (
+                    {project.liveUrl && project.liveUrl !== "#" && (
                       <a
                         href={project.liveUrl}
                         target="_blank"

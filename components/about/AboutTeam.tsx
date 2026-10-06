@@ -3,8 +3,9 @@
 const team = [
   { name: "KAKKAD PRIYANSH", role: "CEO & FOUNDER", initials: "KP" },
   { name: "RAJ AJMERA", role: "DIRECTOR & FOUNDER", initials: "RA" },
-  { name: "NEEL VAGHASIYA", role: "CTO", initials: "NV" },
+  { name: "NEEL VAGHASIYA", role: "JAVA DEVELOPER", initials: "NV" },
   { name: "DHRUVIL SOLANI", role: "FULL STACK DEVELOPER", initials: "DS" },
+  { name: "ABHAY KUMAR SAINI", role: "FULL STACK DEVELOPER", initials: "AS" },
   { name: "VIVEK ADESARA", role: "GAME & UNITY DEVELOPER", initials: "VA" },
   { name: "PRIYANK SAVALIYA", role: "REACT DEV.", initials: "PS" },
   { name: "JEET RANPARA", role: "EMBEDDED DEV.", initials: "JR" },
