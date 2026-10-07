@@ -121,7 +121,7 @@ const projects = [
     desc: "A premium omnichannel retail catalog and lead engine for pre-owned smartphones and laptops, connecting buyers directly with sellers via instant WhatsApp negotiation.",
     images: [
       "/projects/jeel-mobile/hero.png",
-      "/projects/jeel-mobile/logo.png",
+      "/projects/jeel-mobile/admin-dashboard.png",
     ],
     liveUrl: "#",
     features: ["Device Condition Grading", "Instant WhatsApp Direct Inquiries", "Multi-Brand Mobile & Laptop Catalog", "Smart Filter & Wishlist", "Fast Mobile-First UX"],
@@ -137,37 +137,41 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-card border border-border rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div className="relative bg-card border border-border rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-secondary hover:bg-muted transition-colors"
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-background/80 hover:bg-background shadow-md transition-colors"
         >
           <X size={18} />
         </button>
 
         {images.length > 0 && (
-          <div className="relative h-64 bg-secondary overflow-hidden rounded-t-2xl">
-            <img src={images[imgIdx]} alt={project.title} className="w-full h-full object-contain" />
+          <div className="relative w-full min-h-[260px] sm:min-h-[360px] max-h-[60vh] bg-secondary/80 flex items-center justify-center p-3 sm:p-5 overflow-hidden rounded-t-2xl">
+            <img
+              src={images[imgIdx]}
+              alt={project.title}
+              className="max-w-full max-h-[55vh] w-auto h-auto object-contain rounded-xl shadow-md"
+            />
             {images.length > 1 && (
               <>
                 <button
                   onClick={() => setImgIdx((i) => (i - 1 + images.length) % images.length)}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background transition-colors z-10 shadow-md"
                 >
                   <ChevronLeft size={18} />
                 </button>
                 <button
                   onClick={() => setImgIdx((i) => (i + 1) % images.length)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background transition-colors z-10 shadow-md"
                 >
                   <ChevronRight size={18} />
                 </button>
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
                   {images.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setImgIdx(i)}
-                      className={`h-1.5 rounded-full transition-all ${i === imgIdx ? "w-6 bg-primary" : "w-1.5 bg-white/50"}`}
+                      className={`h-1.5 rounded-full transition-all ${i === imgIdx ? "w-6 bg-primary" : "w-1.5 bg-white/60"}`}
                     />
                   ))}
                 </div>
@@ -248,7 +252,7 @@ export default function Projects() {
             return (
               <div key={project.id} className="project-card group">
                 <div
-                  className="relative h-56 bg-secondary cursor-pointer overflow-hidden"
+                  className="relative h-56 bg-secondary cursor-pointer overflow-hidden p-2 flex items-center justify-center"
                   onClick={() => setSelected(project)}
                 >
                   {images.length > 0 && (

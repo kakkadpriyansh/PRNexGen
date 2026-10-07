@@ -563,7 +563,7 @@ export const projects: Project[] = [
       finalOutcome: "A high-conversion digital catalog that replaced manual messaging, resulting in higher sales volume and faster customer response cycles.",
       gallery: [
         "/projects/jeel-mobile/hero.png",
-        "/projects/jeel-mobile/logo.png",
+        "/projects/jeel-mobile/admin-dashboard.png",
       ],
       features: [
         "Mobile-First Responsive Interface",
