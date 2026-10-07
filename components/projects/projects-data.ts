@@ -441,7 +441,7 @@ export const projects: Project[] = [
       finalOutcome: "A world-class digital flagship representing the Zeovus conglomerate, enhancing brand perception across overseas partners and corporate stakeholders.",
       gallery: [
         "/projects/zeovus/hero.jpg",
-        "/projects/zeovus/quality-assurance.png",
+        "/projects/zeovus/admin-dashboard.png",
       ],
       features: [
         "Global Corporate Division Showcase",
@@ -475,46 +475,48 @@ export const projects: Project[] = [
     },
   },
 
-  /* ── 8. Zeovus Life ────────────────────────────────────── */
+  /* ── 8. Zeovus Life ────────────────────────────────── */
   {
     id: "zeovus-life",
     name: "Zeovus Life",
-    shortDesc: "A modern B2B manufacturing and formulation platform with a catalog of 260+ nutraceutical and cosmetic products.",
-    longDesc: "Built for contract manufacturing and B2B formulations, Zeovus Life delivers interactive product exploration across 14 nutraceutical categories and 4 cosmetic lines, complete with detailed ingredient profiles, packaging types, and sample inquiry workflows.",
+    shortDesc: "A modern B2B manufacturing and formulation platform with an extensive catalog of 800+ nutraceutical and cosmetic products.",
+    longDesc: "Built for contract manufacturing and B2B formulations, Zeovus Life delivers interactive product exploration across 19 categories (Nutraceuticals and Cosmetics), complete with detailed ingredient profiles, packaging types, and sample inquiry workflows.",
     category: "Enterprise",
     tags: ["Next.js 14", "Tailwind CSS", "TypeScript", "B2B Catalog", "CMS"],
     status: "Completed",
     image: "/projects/zeovus-life/hero.png",
     accentColor: "#15A859",
-    liveUrl: "#",
+    liveUrl: "https://zeovuslife.com",
     clientName: "Zeovus Life",
     featured: true,
     detail: {
       clientBackground: "Zeovus Life is a premier B2B manufacturer specializing in high-efficacy nutraceutical supplements and premium cosmetic formulations.",
       businessProblem: "Needed an organized, searchable digital catalog to demonstrate extensive manufacturing capabilities and generate B2B formulation inquiries.",
       projectGoals: [
-        "Architect a catalog organizing 260+ complex SKUs across diverse dosage forms",
-        "Highlight certifications (GMP, ISO, Halal) to instill trust with global distributors",
+        "Architect an enterprise formulation directory organizing 800+ SKUs across diverse dosage forms",
+        "Provide full administrative dashboard for real-time SKU, category, and inquiry oversight",
+        "Highlight certifications (GMP, US FDA, ISO, Halal) to instill trust with global distributors",
         "Streamline contract manufacturing inquiry and custom formulation requests",
         "Maintain visual synergy with the parent Zeovus brand guidelines"
       ],
-      ourSolution: "Engineered a responsive Next.js 14 web platform structured into intuitive dosage categories (effervescent, capsules, gummies, creams) with instant search, category filtering, and direct quotation requests.",
+      ourSolution: "Engineered a responsive Next.js 14 web platform structured into intuitive dosage categories with instant search, category filtering, sample inquiry generator, and a dedicated admin portal.",
       finalOutcome: "A robust digital showroom enabling overseas buyers and brand owners to review manufacturing specs and initiate bulk orders rapidly.",
       gallery: [
         "/projects/zeovus-life/hero.png",
-        "/projects/zeovus-life/preview.png",
+        "/projects/zeovus-life/admin-dashboard.png",
       ],
       features: [
-        "260+ SKU Formulation Directory",
-        "Nutraceutical & Cosmetic Categorization",
+        "800+ SKU Formulation Directory",
+        "Dedicated Admin Catalog Management",
+        "Nutraceutical and Cosmetic Categorization",
         "Contract Manufacturing Process Flow",
         "Regulatory Certification Display",
         "Custom Formulation Request Generator",
         "Clean Responsive B2B Architecture"
       ],
       stats: [
-        { value: "260+", label: "Products Cataloged" },
-        { value: "18", label: "Specialty Categories" },
+        { value: "800+", label: "Products Cataloged" },
+        { value: "19", label: "Specialty Categories" },
         { value: "3wks", label: "Delivery Time" },
         { value: "100%", label: "Satisfaction" },
       ],

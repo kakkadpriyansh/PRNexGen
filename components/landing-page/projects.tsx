@@ -95,7 +95,7 @@ const projects = [
     desc: "A global corporate portal for Zeovus Group, presenting multinational business divisions across food, lifestyle, wellness, and international trade operations.",
     images: [
       "/projects/zeovus/hero.jpg",
-      "/projects/zeovus/quality-assurance.png",
+      "/projects/zeovus/admin-dashboard.png",
     ],
     liveUrl: "https://zeovus.com",
     features: ["Global Business Showcase", "Multi-division Architecture", "International Presence Map", "Quality Assurance Standards", "B2B Lead Generation"],
@@ -105,13 +105,13 @@ const projects = [
     title: "Zeovus Life",
     category: "Enterprise",
     tech: ["Next.js", "Tailwind CSS", "TypeScript"],
-    desc: "A modern B2B manufacturing and catalog platform for nutraceutical and cosmetic formulations, showcasing over 260+ SKUs with comprehensive product specifications.",
+    desc: "A modern B2B manufacturing and catalog platform for nutraceutical and cosmetic formulations, showcasing over 800+ SKUs across 19 categories with comprehensive product specifications.",
     images: [
       "/projects/zeovus-life/hero.png",
-      "/projects/zeovus-life/preview.png",
+      "/projects/zeovus-life/admin-dashboard.png",
     ],
-    liveUrl: "#",
-    features: ["Interactive Formulation Catalog", "260+ Nutraceutical & Cosmetic SKUs", "Contract Manufacturing Workflow", "Quality Certification Standards", "B2B Sample Inquiries"],
+    liveUrl: "https://zeovuslife.com",
+    features: ["Interactive Formulation Catalog", "800+ Nutraceutical & Cosmetic SKUs", "Custom Admin Panel", "Contract Manufacturing Workflow", "B2B Sample Inquiries"],
   },
   {
     id: 9,
